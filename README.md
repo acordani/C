@@ -27,4 +27,41 @@ Et donc, en entrée de l'app, on va avoir des requetes entrantes. Il va donc man
 
 Il va dispatcher. Telle requette va aller ds tel controller et dans telle action.
 
-Comment 
+###Comment créer un controller dans un application Rails?
+
+On va utiliser des generateurs : **rails g controller pages about contact**
+
+g             => generate
+pages         => Nom du controller, **tjs au pluriel**. Le controller va gérer **des pages**.
+about action  => Methode d'instance d'un controller.
+
+Ca va créer les routes (2), les actions du controller et les vues associées.
+
+Pour afficher les pages, on fait : localhost/3000/pages/contact ou pages/about
+pages_contact et pages_about sont les chemins (path).
+
+Pour voir les routes de l'application , on écrit rake routes (Affiche moi les routes de mon app!!)
+
+###Comment l'action du controller sait quelle vue elle doit renvoyer?
+
+Une action d'un controller(methode ruby) renvoie le fichier qui a le meme nom que cette methode et qui se trouve dans le fichier vue. Il sera dans un dossier qui portera le meme nom que le controller et la page associée aura le meme nom que l'action du controoler.
+
+ex:
+
+Controller Pages| View  dossier pages
+----------------|------------------------
+Action 'about'  | Fichier about.html.erb
+
+
+Comment fait-on pour créer une nouvelle action dans Pages
+
+def team
+end
+
+et dans View > pages > 
+On créer la page team.html.erb
+
+sans oublier la route associée
+
+get 'team' => 'pages#team'
+

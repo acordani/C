@@ -125,62 +125,65 @@ On va rajouter une page de recherche sur le site:
         <input type="submit" value="search">
       </form>
       
-      Dans form action="", on va avoir l'Url surlequel on va soumettre le formulaire. cad, quand on va soumettre le formulaire, il va y avoir une requete, et ds cette requete, il y aura une URL. C'est celle-ci quon va utiliser dans  form action="/home". On pourrait aussi decider de faire une requete sur la meme URl form action="/search"
-      L'attribut name est aussi tres important.Ca sert a nommer le parametre pour ensuite le recuperer ds notre backend.
-      C'est ce parametre qui va partir ds l'url dans la query string.
-      Par exemple si on envoie le formulaire, et qu'on nomme thai dans le formulaire , on va avoir en postant ce formaulaire, l'url suivante : localhost/3000/search?category=thai
+Dans form action="", on va avoir l'Url surlequel on va soumettre le formulaire. cad, quand on va soumettre le formulaire, il va y avoir une requete, et ds cette requete, il y aura une URL. C'est celle-ci quon va utiliser dans form action="/home". On pourrait aussi decider de faire une requete sur la meme URl form action="/search"
+
+L'attribut name est aussi tres important.Ca sert a nommer le parametre pour ensuite le recuperer ds notre backend.
+C'est ce parametre qui va partir ds l'url dans la query string.
+Par exemple si on envoie le formulaire, et qu'on nomme thai dans le formulaire , on va avoir en postant ce formaulaire, l'url suivante : localhost/3000/search?category=thai
+
+Les parametres passent dans l'URL car par defaut le formulaire fait un get
+Donc quand on soumet le formulaire, on fait une requete get sur /search.
+Donc on va arriver sur le fichier route qui nous dit que get 'search' => 'pages#search'
       
-      Les parametres passent dans l'URL car par defaut le formulaire fait un get
-      Donc quand on soumet le formulaire, on fait une requete get sur /search.
-      Donc on va arriver sur le fichier route qui nous dit que get 'search' => 'pages#search'
-      
-      Donc on arrive au controller Pages dans l'action search.
+Donc on arrive au controller Pages dans l'action search.
       def search
         @category = params[:category]
       end
-      pour recuperer les parametres, on va chercher les params[:category] et qu'on va integrer dans une variable d'instance @category.
+pour recuperer les parametres, on va chercher les params[:category] et qu'on va integrer dans une variable d'instance @category.
       
-      Et du coup, le controller Pages/search envoie la variable d'instance à la vue pages/search
+Et du coup, le controller Pages/search envoie la variable d'instance à la vue pages/search
       
       <p>Search for <%= @category %>
       
-      Si on rajoute method="post" à form action="".
-      Il va y avoir un probleme car on fait maintenant une requete post sur /search. Et il n'y a pas de route post.
+Si on rajoute method="post" à form action="".
+Il va y avoir un probleme car on fait maintenant une requete post sur /search. Et il n'y a pas de route post.
+
+Il faut donc rajouter une route:
       
-      Il faut donc rajouter une route:
+      post 'search' => 'pages#search". 
+Le parametre ne sera plus envoyé dans l'Url mais ds le corps de la requete.
       
-      post 'search' => 'pages#search". le parametre ne sera plus envoyé dans l'Url mais ds le corps de la requete.
+La il y avoir une erreur car Rails protege les formulaire. Il faudra passer par un helper form_for ou simple_form.
       
-      La il y avoir une erreur car Rails protege les formulaire. Il faudra passer par un helper form_for ou simple_form.
-      
-      Si au lieu de mettre < input type="text" name="category" >, on met :
+Si au lieu de mettre < input type="text" name="category" >, on met :
       <input type="text" name="search[category]">
       <input type="text" name="search[name]">
       
-      ca va nous donner un formulaire avec 2 inputs. Si on met un raise dans le controller a search, et qu'on inspecte les params, ca nous donne:
+ca va nous donner un formulaire avec 2 inputs. Si on met un raise dans le controller a search, et qu'on inspecte les params, ca nous donne:
       {"search"=>{"category"=>"thai", "name"=>"blue elephant"}. 
       
-      Il va nous donner une clé search qui aura des sous informations category et name. Et on peut y acceder en faisant params[:search]. Et ca c'est plutôt cool ;-)
+Il va nous donner une clé search qui aura des sous informations category et name. Et on peut y acceder en faisant params[:search]. Et ca c'est plutôt cool ;-)
       
-      On peut aussi dans les routes faire des url parametriques:
+On peut aussi dans les routes faire des url parametriques:
       
-      get 'search/:category' => 'pages#search". Ca donne un but d'Url qui sera interprété comme un parametre.
-      C'est comme restaurant/:id => restaurant/23
+      get 'search/:category' => 'pages#search". 
+Ca donne un but d'Url qui sera interprété comme un parametre.
+C'est comme restaurant/:id => restaurant/23
      
-     ## Les liens
+##Les liens
      
-     On utilise un helper 'link_to'
+On utilise un helper 'link_to'
      <%= link_to "texte du lien", url_path %>
      <%=" chercher un resto", search_path %>
      
-     quand on fait rake routes, il ya a gauche des prefixes qui vont nous donner accés à des methodes qui vont generer pour nous des url.
+quand on fait rake routes, il ya a gauche des prefixes qui vont nous donner accés à des methodes qui vont generer pour nous des url.
      
-     Par exemple l'url /search a comme prefixe search. dans le link_to on ajoute au prefixe _path.
+Par exemple l'url /search a comme prefixe search. dans le link_to on ajoute au prefixe _path.
      
-     Ca permet si on veut changer l'url d'une page de ne pas tout casser.
+Ca permet si on veut changer l'url d'une page de ne pas tout casser.
      
-     par exemple a la place de get 'team' => 'pages#team', on veut mettre get 'equipe'.
-     on va donc changer l'url mais en ajoutant as: :team apres, on ne changera pas les liens créés avec link_to
+par exemple a la place de get 'team' => 'pages#team', on veut mettre get 'equipe'.
+on va donc changer l'url mais en ajoutant as: :team apres, on ne changera pas les liens créés avec link_to
      
      get 'equipe' => 'pages#team', as: :team
       

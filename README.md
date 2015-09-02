@@ -7,6 +7,15 @@ En fonction de la requete de l'utilisateur, le controller va interoger le modele
 
 Donc, il va aller chercher les infos depuis le modèle et une fois que le controller a les infos, il les injecte dans les vues afin de construire la page qui va être renvoyée à l'utilisateur.
 
+C'est aussi au controller d'avoir le code ruby afin de l'injecter dans les vues.
+Il va definir des variables d'instances qui seront accessibles depuis la vue.
+Une variable d'instance est une variable avec un @ devant.
+On dit qu'on instancier un controller. On va donc ensuite donner ces variables d'instance à la vue.
+
+Quand on fait une requete ca instanci  un controller. Ca tape une action et si tu veux donner des choses à ta vue, c'est cette action qui doit definir les variables d'instance.
+On a donc besoin d'instancier des variables et ce sont elles qui seront disponible ds la vue associée.
+Par exemple, dans le controller pages et l'action about. C'est ici qu'on va instancier les variables qui seront disponibles dans la vue pages/about
+
 ##Model
 
 Il assure le lien avec la base de données.
@@ -14,6 +23,12 @@ Il assure le lien avec la base de données.
 ##View
 
 La vue doit présenter l'information.
+.html.erb car on peut melanger du code html et du code ruby par l'intermediaire de <% %> ou <%= %>
+
+Dans la vue, on aura donc les variables d'instances qui auront été instanciées par le controller et on lui demandera de les afficher par l'intermediaire de <%= %>.
+
+C'est le layout qui recoit le squelette de la page. Les vues vont s'inserer à la place de yield. 
+Dans le layout, il y aura donc le header et le footer. Le contenu changera en fonction de la page.
 
 
 Comment communique t-on avec un serveur?
@@ -44,7 +59,8 @@ Pour voir les routes de l'application , on écrit rake routes (Affiche moi les r
 
 ###Comment l'action du controller sait quelle vue elle doit renvoyer?
 
-Une action d'un controller(methode ruby) renvoie le fichier qui a le meme nom que cette methode et qui se trouve dans le fichier vue. Il sera dans un dossier qui portera le meme nom que le controller et la page associée aura le meme nom que l'action du controoler.
+Une action d'un controller(methode ruby) renvoie le fichier qui a le meme nom que cette methode et qui se trouve dans le fichier vue. Il sera dans un dossier qui portera le meme nom que le controller et la page associée aura le meme nom que l'action du controller.
+Un controller est donc lié à un dossier de vues. Ca s'appelle la convention Action-Vue
 
 ex:
 
@@ -53,10 +69,12 @@ Controller Pages| View  dossier pages
 Action 'about'  | Fichier about.html.erb
 
 
-Comment fait-on pour créer une nouvelle action dans Pages
+Comment fait-on pour créer une nouvelle action dans Pages ?
+
 
 def team
 end
+
 
 et dans View > pages > 
 On créer la page team.html.erb
@@ -64,4 +82,59 @@ On créer la page team.html.erb
 sans oublier la route associée
 
 get 'team' => 'pages#team'
+
+Chaque vues seront donc dans des dossiers differents qui porteront le nom de chaque controller.
+
+2eme méthode de rooting:
+
+root 'welcome#index'
+
+Cette route va gérer la page get /, c'est a dire la racine du site.
+C'est donc la première page ou le site va pointer. C'est à  dire http://localhost/3000
+Pour notre exemple, ca sera root 'pages#about'
+
+Pour afficher le rooting, il faur faire rake routes
+
+Comment recuperer des parametres depuis une requete entrantes ?
+
+Les parametres, il y aplusieurs facons de les communiquer:
+
+- Par un Get, les parametres sont ds l'URL (query strings). C'est quand on fait un search.
+- Par un Post, les params sont cachés ds le corps de la requete.
+-  Et on peut avoir : un bout d'URL qui est interprété par exemple airbnb avec torino (58:00).
+
+Dans Rails, on recupere tous ces parametres dans un hash qui va s'appeler params. Peu importe si c'est get ou post. C'est magique !!
+
+On va rajouter une page de recherche sur le site:
+
+- Rooter
+
+    get 'search" => 'pages#search'
+
+- Controller Pages
+
+    def search
+      
+    end
+
+- View pages
+
+    search.html.erb
+      <form action="/search">
+        <input type="text" name="category">
+        <input type="submit" value="search">
+      </form>
+      
+      Dans form action="", on va avoir l'Url surlequel on va soumettre le formulaire. cad, quand on va soumettre le formulaire, il va y avoir une requete, et ds cette requete, il y aura une URL. C'est celle-ci quon va utiliser dans  form action="/home". On pourrait aussi decider de faire une requete sur la meme URl form action="/search"
+      L'attribut name est aussi tres important.Ca sert a nommer le parametre pour ensuite le recuperer ds notre backend.
+      C'est ce parametre qui va partir ds l'url dans la query string.
+      Par exemple si on envoie le formulaire, et qu'on nomme thai dans le formulaire , on va avoir en postant ce formaulaire, l'url suivante : localhost/3000/search?category=thai
+      
+      Les parametres passent dans l'URL car par defaut le formulaire fait un get
+      Donc quand on soumet le formulaire, on fait une requete get sur /search.
+      Donc on va arriver sur le fichier route qui nous dit que get 'search' => 'pages#search'
+      
+      Donc on arrive au controller Pages dans l'action search.
+      
+      
 

@@ -46,6 +46,7 @@ la class form-control est aussi déjà dans simple_form, dc on la retire
 
 Pour modifier un input car simple_form detecte automatiquement quelle genre d'input c'est(string, integer,...)
 Si on veut modifier, on rajoute as: :date par exemple, si on veut un input format date
+Pour modifier un input en type string, il faut mettre as :string
 
 Pour l'input category, il faut le modifier pas par as, mais directement:
 <% f.input :category, collection: Animal::CATEGORIES, prompt: "Choisissez" %>
@@ -57,4 +58,5 @@ Pour ajouter une class html, on peut l'ajouter soit sur le label, soit sur l'inp
 On fait donc: label_html: {class: "badge badge-primary"}, input_html: {class: "input-lg"}
 
 ##datepicker
-lien(http://eternicode.github.io/bootstrap-datepicker/)
+lien(https://github.com/Nerian/bootstrap-wysihtml5-rails)
+

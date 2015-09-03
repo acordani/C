@@ -58,5 +58,5 @@ Pour ajouter une class html, on peut l'ajouter soit sur le label, soit sur l'inp
 On fait donc: label_html: {class: "badge badge-primary"}, input_html: {class: "input-lg"}
 
 ##datepicker
-lien(https://github.com/Nerian/bootstrap-wysihtml5-rails)
+lien(https://github.com/Nerian/bootstrap-datepicker-rails)
 

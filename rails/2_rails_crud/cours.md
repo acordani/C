@@ -162,7 +162,10 @@ On va faire le formulaire en dur ensuite, on va utliser un helper
     <%= f.submit %>
   <% end %>
   ```
-  ```form_for``` est comme ```link_to```. Link_to genere une balise <a href>, form_for genere une balise <form>
+  
+  form_for est comme link_to . 
+  
+  Link_to genere une balise <a href>, form_for genere une balise <form>
   form_for a des sous methodes qui vont permettre de generer tous les input(text_field, number_field, submit
   si on veut rajouter un label pour chaque input, il faut rajouter f.label
   
@@ -192,6 +195,15 @@ On va faire le formulaire en dur ensuite, on va utliser un helper
   @restaurant = Restaurant.find(params[:id])
   @restaurant.update(params[:restaurant])
   ```
+Pour donner plus de securité, il faut en plus passer par des strongs params.
+```
+private
+def restaurant_params
+  params.require(:restaurant).permit(:name, :address, :stars)
+end
+```
+
+et du coup on utilise les strongs params a la place de params[:restaurant]
 
 
 

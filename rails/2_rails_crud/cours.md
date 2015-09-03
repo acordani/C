@@ -99,7 +99,7 @@ Pour l'index, il manque la vue: index.html.erb
 ```
 
 Dans le controller, index doit trouver tous les restaurants:
-@restaurants = Restaurant.all
+```@restaurants = Restaurant.all```
 
 Pour le moment, il n'y a pas de restaurants. Donc on va en créer dans la seed
 ```
@@ -114,7 +114,7 @@ Il faut l'id pour récuperer le resto.
 Si on fait rake routes, on a : restaurants/:id
 l'id est donc dans l'Url.
 pour le recuperer, on va utiliser la methode .find
-@restaurant = Restaurant.find(params[:id])
+```@restaurant = Restaurant.find(params[:id])```
 
 Il faut créer le template: show.html.erb
 ```ruby
@@ -132,6 +132,33 @@ Si on fait un rake routes, on a restaurant_path mais dans l'url il y a un id. on
 
 ```<%= link_to "Allez voir", restaurant_path(id: restaurant.id %>```
 ou ```<%= link_to "Allez voir", restaurant_path(restaurant) %>``` On passe l'objet. On passe le restaurant et rails sait qu'il doit trouver l'id tt seul.
+
+###le new
+On y accede par la requete restaurants/new
+on crée le template new.html.erb
+et on va faire l'edit en meme temps edit.html.erb
+
+le formulaire ressemble a :
+on poste sur /restaurants. sur rake routes a create, on a l'url /restaurants
+On va faire le formulaire en dur ensuite, on va utliser un helper
+<form action="/restaurants" method="post">
+  <input type="text" name="restaurant[name]">
+  <input type="number" name="restaurant[stars]">
+  <input type="text" name="restaurant[address]">
+  <input type="submit" value="create resto]">
+  
+  on va donc utiliser un helper
+  <%= form_for @restaurant do |f| %>
+    <%= f.label :name, "enter a name" %>
+    <%= f.text_field :name %>
+    <%= f.label :stars %>
+    <%= f.number_field :stars%>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    <%= f.submit %>
+  form_for est comme link_to. Link_to genere une balise <a href>, form_for genere une balise <form>
+  form_for a des sous methodes qui vont permettre de generer tous les input(text_field, number_field, submit
+  si on veut rajouter un label pour chaque input, il faut rajouter f.label
 
 
 

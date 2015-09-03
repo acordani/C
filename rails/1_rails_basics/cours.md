@@ -174,7 +174,8 @@ C'est comme restaurant/:id => restaurant/23
 
 On utilise un helper 'link_to'
      <%= link_to "texte du lien", url_path %>
-     <%=" chercher un resto", search_path %>
+     <%= "chercher un resto", search_path %>
+     <%= reastaurant.name,path %>
 
 quand on fait rake routes, il ya a gauche des prefixes qui vont nous donner accés à des methodes qui vont generer pour nous des url.
 

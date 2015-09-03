@@ -56,4 +56,5 @@ resources :restaurants do
   resources :reviews, only: [:new, :create]
 end
 
+La resource imbriquée est celle qui appartient à l'autre.
 

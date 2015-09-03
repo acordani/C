@@ -48,10 +48,12 @@ def chef
 end
 
 ensuite on crée la vue chef.html.erb
-
 <%= @restaurant.chef %>
 
 ###Routes nestées
 
+resources :restaurants do
+  resources :reviews, only: [:new, :create]
+end
 
 

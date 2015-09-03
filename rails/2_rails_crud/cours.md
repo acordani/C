@@ -162,35 +162,34 @@ On va faire le formulaire en dur ensuite, on va utliser un helper
     <%= f.submit %>
   <% end %>
   ```
+
   
-  form_for est comme link_to . 
+Link_to genere une balise a href, form_for genere une balise form
+form_for a des sous methodes qui vont permettre de generer tous les input(text_field, number_field, submit
+si on veut rajouter un label pour chaque input, il faut rajouter f.label
   
-  Link_to genere une balise <a href>, form_for genere une balise <form>
-  form_for a des sous methodes qui vont permettre de generer tous les input(text_field, number_field, submit
-  si on veut rajouter un label pour chaque input, il faut rajouter f.label
+Ce helper fonctionne de la manièe suivante:
+Pour se construire, il a besoin qu'on lui donne un objet restaurant car apres, il va generer des parametres imbriqués ```(restaurant[:name], restaurant[:stars], restaurant[:address])```.
   
-  Ce helper fonctionne de la manièe suivante:
-  Pour se construire, il a besoin qu'on lui donne un objet restaurant car apres, il va generer des parametres imbriqués ```(restaurant[:name], restaurant[:stars], restaurant[:address])```.
+Ce qui est bie  c'est qu'on met le meme formulaire form_for sur le new et sur l'edit. Et selon que l'objet est prérempli ou pas, il va remplir ou non le formulaire.
   
-  Ce qui est bie  c'est qu'on met le meme formulaire form_for sur le new et sur l'edit. Et selon que l'objet est prérempli ou pas, il va remplir ou non le formulaire.
-  
-  Donc ds le controller à new, on doit construire cet objet en coquille vide.
+Donc ds le controller à new, on doit construire cet objet en coquille vide.
   ```@restaurant = Restaurant.new```
-  et pour l'edit, on va mettre:
+et pour l'edit, on va mettre:
   ```@restaurant= Restaurant.find(params[:id])```. Car il a besoin de l'id dans l'Url.
   
-  Si on fait rails s et qu'on va sur le formulaire new, on peut en créer un.
-  Au moment d'envoyer, il nous dit qu'il manque ```create.html.erb```
+Si on fait rails s et qu'on va sur le formulaire new, on peut en créer un.
+Au moment d'envoyer, il nous dit qu'il manque ```create.html.erb```
   
-  Allons voir ce quil y a ds les parametres en faisant un raise au niveau du controlleur create.
-  On se rend compte qu'il y a un parametre qui s'appellle restaurant et qui a comme valeur tout ce qu'on a mis dans le formulaire quand on l'a envoyé.
-  Si on veut avoir le detail on peut faire: ```params[:restaurant]```
-  Du coup si on veut faire un create, on peut faire: ```Restaurant.create(params[:restaurant])```
+Allons voir ce quil y a ds les parametres en faisant un raise au niveau du controlleur create.
+On se rend compte qu'il y a un parametre qui s'appellle restaurant et qui a comme valeur tout ce qu'on a mis dans le formulaire quand on l'a envoyé.
+Si on veut avoir le detail on peut faire: ```params[:restaurant]```
+Du coup si on veut faire un create, on peut faire: ```Restaurant.create(params[:restaurant])```
   
-  et bien, on va faire la meme chose dans le controller a create.
+et bien, on va faire la meme chose dans le controller a create.
   ```Restaurant.create(params[:restaurant]) ```
   
-  Dans le update, on fait la meme chose mais avant, il faut le recuperer avec le params[:id]
+Dans le update, on fait la meme chose mais avant, il faut le recuperer avec le params[:id]
   ```
   @restaurant = Restaurant.find(params[:id])
   @restaurant.update(params[:restaurant])

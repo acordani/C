@@ -52,4 +52,88 @@ A chaque fois qu'on crée un model, il faut jouer(crash-tester) avec dans la con
   ```
    ```git add .``` & ```git commit -m "adding validations to restaurant"```
   
+##Définir les 7 Points d'entrées CRUD(Restful)
+
+Rails permet d'avoir un raccourci qui permet de sortir le meme routing conventionnel de Rails:
+    ```resources :restaurants ```
+
+Si notre site était en read only, cad que l'utilisateur ne peut que lire les infos du site. Le contenu est ajouté par le dev du site.
+on aurait:  ```resources :restaurants, only: [:index, :show] ```
+On garde juste que les routes qui correspondent à index et à show.
+
+##Le controller
+```Rails g controller restaurants```
+On va faire tt le routing Crud
+```ruby
+def index
+  @restaurants = Restaurant.all
+end
+
+def show
+end
+
+def new
+end
+
+def create
+end
+
+def edit
+end
+
+def update
+end
+
+def destroy
+end
+```
+
+Pour l'index, il manque la vue: index.html.erb
+```ruby
+<h1>Les restaurants</h1>
+<@restaurants.each do |restaurant|%>
+  <h2><%= restaurant.name %>
+  <p><%= restaurant.address %>
+  <p><%= "*" * restaurant.stars %>
+<% end %>
+```
+
+Dans le controller, index doit trouver tous les restaurants:
+@restaurants = Restaurant.all
+
+Pour le moment, il n'y a pas de restaurants. Donc on va en créer dans la seed
+```
+Restaurant.create(name:"Ganieure", stars:2, address:"Champs Elysées")
+Restaurant.create(name:"la serre", stars:2, address:"Quai de la Rapée")
+Restaurant.create(name:"le Dindon", stars:3, address:"Rue de louse")
+```
+```rake db:seed```, pour executer la seed.
+
+Le show
+Il faut l'id pour récuperer le resto.
+Si on fait rake routes, on a : restaurants/:id
+l'id est donc dans l'Url.
+pour le recuperer, on va utiliser la methode .find
+@restaurant = Restaurant.find(params[:id])
+
+Il faut créer le template: show.html.erb
+```ruby
+<h1><%= @restaurant.name %>
+<p><%= @restaurant.address %>
+<p><%= "*" * @restaurant.stars %>
+```
+
+Mettons le lien pour revenir au listing
+On va utiliser les prefix .
+```<%= link_to "Back to list", restaurants_path %>```
+
+Si on veut un lien qui nous envoie ds la show view de chaque restaurant.
+Si on fait un rake routes, on a restaurant_path mais dans l'url il y a un id. on a donc besoin de cet id.
+
+```<%= link_to "Allez voir", restaurant_path(id: restaurant.id %>```
+ou ```<%= link_to "Allez voir", restaurant_path(restaurant) %>``` On passe l'objet. On passe le restaurant et rails sait qu'il doit trouver l'id tt seul.
+
+
+
+
 

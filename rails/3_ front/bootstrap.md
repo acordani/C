@@ -37,3 +37,24 @@ Pour submit si on souhaite lui mettre une classe, il ne faut pas mettre de virgu
 <%= f.submit class: "btn btn-success" %>
 
 Le plus simple est d'utiliser simple_form en gem.
+
+Au lieu de text_field, date_field,..., on utilise input.
+Du coup, on n'a plus besoin des div form-group, des labels
+si vous ne voulez pas de label, il faut mettre label: false dans l'input
+si on veut modifier le label, label: "khklhkhkl"
+la class form-control est aussi déjà dans simple_form, dc on la retire
+
+Pour modifier un input car simple_form detecte automatiquement quelle genre d'input c'est(string, integer,...)
+Si on veut modifier, on rajoute as: :date par exemple, si on veut un input format date
+
+Pour l'input category, il faut le modifier pas par as, mais directement:
+<% f.input :category, collection: Animal::CATEGORIES, prompt: "Choisissez" %>
+
+Tout est configurable ds le fichier config initializer simple_form
+
+Pour ajouter une class html, on peut l'ajouter soit sur le label, soit sur l'input.
+
+On fait donc: label_html: {class: "badge badge-primary"}, input_html: {class: "input-lg"}
+
+##datepicker
+lien(http://eternicode.github.io/bootstrap-datepicker/)

@@ -151,7 +151,7 @@ On va faire le formulaire en dur ensuite, on va utliser un helper
   ```ruby
   <%= form_for @restaurant do |f| %>
     <%= f.label :name, "enter a name" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "votre nom" %>
     
     <%= f.label :stars %>
     <%= f.number_field :stars%>
@@ -162,6 +162,16 @@ On va faire le formulaire en dur ensuite, on va utliser un helper
     <%= f.submit %>
   <% end %>
   ```
+  
+  On peut ajouter dans form_for, un select.
+  Par exemple si dans le model restaurant, on avait defini des categories de restaurant:
+  CATEGORIES = [fast-food, restaurant] ou CATEGORIES = %w(fast-food, restaurant)
+  validates :category, inclusion: {in:CATEGORIES}
+  
+  A ce moment là, dans le form_for, on peut rajouter:
+  <%= f.select :category ,Animal::CATEGORIES, prompt: "Quelle catégorie" %>
+  CATEGORIES EST UNE CONSTANTE QUI EST DANS LA CLASSE
+  
 
   
 Link_to genere une balise a href, form_for genere une balise form

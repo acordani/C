@@ -6,4 +6,4 @@ On a un model restaurant qui possede stars comme nombre d'étoile  en integer.
 ca va donner le nombre d'étoile en picto
 
 en plus simple, on peut faire 
-< "*" * <%= @restaurant.stars %>
+<p><%= "*" * @restaurant.stars %></p>

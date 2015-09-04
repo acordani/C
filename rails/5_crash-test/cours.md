@@ -21,3 +21,7 @@ On peut faire epicure.reviews.count =>1
 et epicure.reviews.first.content => super bon resto !!
 
 On peut aussi faire good.restaurant.name ca donne le nom du restaurant "l'épicure"
+-------------------------------------------------------
+first = Restaurant.first
+review = first.build
+=> Donne un objet Review avec le restaurant_id est pré rempli car on a utilisé build. C'est comme un new qui pré rempli la clé étrangère.

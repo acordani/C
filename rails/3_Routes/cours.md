@@ -1,3 +1,6 @@
+Les routes sont la traduction des User stories:
+ex: En tant qu'utilisateur, je peux voir tous les restaurants
+
 ###Collection
 
 Pour avoir une Url de type get /restaurants/top:

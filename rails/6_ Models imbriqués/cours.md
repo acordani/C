@@ -44,16 +44,48 @@ new
   <% end %>
   on met [@restaurant, @review], comme ca rails sait qu'il doit faire son post sur restaurant_reviews_path
   
-5- remplir le new du create
+5- remplir le new du controller reviews
 
-def create
+def new
   @review = Review.new ou @review = @restaurant.reviews.build
 end
-  l'avantage de la 2 eme solution est qu'il y aura la clé étrangere(restaurant_id) qui sera indiquée dedans
+l'avantage de la 2 eme solution est qu'il y aura la clé étrangere(restaurant_id) qui sera indiquée dedans
   
-  build cest comme un new mais on build le restaurant sur la review comme ca le restaurant_id est prérempli.
+build cest comme un new mais on build le restaurant sur la review comme ca le restaurant_id est prérempli.
   
-  Il va mettre en mémoire et enregistrera lors du create par le save.
+Il va mettre en mémoire et enregistrera lors du create par le save.
+
+6- Create du controller Reviews.
+
+On va d'abord definir des strongs parametters:
+def review_params
+  params.require(:review).permit(:content)
+end
+
+def create
+  @review = Review.new(review_params)
+  @review.restaurant = @restaurant
+  @review.save
+  redirect_to restaurant_path(@restaurant)
+  
+  @restaurant est le restaurant defini dans le before action.
+  
+  Du coup, ca fait:
+  - on va chercher le restaurant par son id
+  - on instancie une nouvelle review avec les paramettres permis (strong parameters)
+  - on passe a cette review l'id du restaurant qu'on avait été cherché en 1
+  - et on sauve.
+
+Ensuite, on veut injecter toutes les reviews.
+
+<ul>
+  <%= @restaurants.reviews.each do |review| %>
+    <li><%= review.content %></li>
+  <% end %>
+</ul>
+
+
+
   
   
   

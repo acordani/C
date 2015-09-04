@@ -15,7 +15,8 @@ Du coup si on fait un rake routes, on va avoir:
 
 ###Controlleur Reviews
 
-1- Avant tout on va faire un before_action :set_restaurant
+1- On voit dans la route /restaurants/:restaurant_id/reviews, qu'il y a le restaurant_id a récupéré
+donc avant tout on va faire un before_action :set_restaurant
 qui permettra de recuperer le restaurant_id dans les params et aller chercher le restaurant correspondant.
 Car la reviews va etre associé à un restaurant.
 

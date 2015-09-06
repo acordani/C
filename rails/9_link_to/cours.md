@@ -4,3 +4,7 @@ on passe le premier argument du link_to c'est le path et ensuite on passe l'imag
 <%= link_to restaurant_path do %>
   <%= image_tag "logo.png", width: "50px" %>
 <% end %>
+
+Lorsqu'on veut un lien sur une image. Ici pin est le model et image est l'image.
+
+<%= link_to (image_tag pin.image.url(:medium)), pin %>

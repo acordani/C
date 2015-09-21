@@ -106,4 +106,25 @@ def create
   
 Dans App/views, créer un nouveau dossier photos
 
-3:20 Create phot (view)
+Puis dans le fichier _list.html.erb
+
+<% if @photos %>
+	<div class="row">
+		<% @photos.each do |photo| %>		
+			<div class="col-md-4">
+				<div class="panel panel-default">
+				  <div class="panel-heading preview">
+				  	<%= image_tag photo.image.url() %>
+				  </div>
+				  <div class="panel-body">
+				  	<span class="pull-right">
+				  		<%= link_to photo, remote: true, method: :delete, data: {confirm: "Are you sure?"} do %>
+					  		<i class="fa fa-times fa-lg"></i>
+				  		<% end %>
+				  	</span>
+				  </div>
+				</div>
+			</div>
+		<% end %>			
+	</div>
+<% end %>

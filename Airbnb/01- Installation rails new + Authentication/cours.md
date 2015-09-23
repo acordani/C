@@ -1,4 +1,4 @@
-
+On utilise soit le rails new minimal soit le rails new avec Devise.
 
 ## Minimal
 

@@ -1,4 +1,4 @@
-- On utilise soit le rails new minimal soit le rails new avec Devise.
+- On utilise le rails new minimal.
 
 ## Minimal
 
@@ -11,22 +11,9 @@ rails new \
   CHANGE_THIS_TO_YOUR_RAILS_APP_NAME
 ```
 
-## Devise
 
-
-
-
-```bash
-rails new \
-  -T --database postgresql \
-  -m https://raw.githubusercontent.com/lewagon/rails-templates/master/devise.rb \
-  CHANGE_THIS_TO_YOUR_RAILS_APP_NAME
-```
-
-Ici, on utilisera le rails new avec Devise.
-
-- Puis, afin de créer le dossier sur github:
-
+Cela  crée le dossier sur github en meme temps.
+Donc pas besoin de:
 ```bash
 git init
 git add .

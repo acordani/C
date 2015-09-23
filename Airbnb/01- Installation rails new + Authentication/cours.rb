@@ -1,9 +1,8 @@
-On utilise soit l'option Minimal soit l'option avec Devise :
+
 
 ## Minimal
 
-Get a minimal rails app ready to be deployed on Heroku with Bootstrap, Simple form and
-debugging gems.
+
 
 ```bash
 rails new \
@@ -14,7 +13,7 @@ rails new \
 
 ## Devise
 
-Same as minimal **plus** a Devise install with a generated `User` model.
+
 
 
 ```bash

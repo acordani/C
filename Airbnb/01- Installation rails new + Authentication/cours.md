@@ -60,5 +60,38 @@ git push heroku master
 
 Et ```heroku open``` pour voir le site
 
+--------------------------------------------------------------------------------------------------------------
+## Authntication
+
+- Mettre ```gem 'devise'``` dans le gemfile
+
+- Puis ```bundle install```
+
+- Puis ```rails g devise:install```
+
+- Puis ```rails g devise User```
+
+- Puis ```rake db:migrate```
+
+- Puis ```rails g devise:views```
+
+- Puis dans ```config/environments/development.rb```
+Mettre: ```config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }```
+
+- Puis, bien verifier que dans ```config/routes.rb```
+Il y a bien : root to: ```"home#index"``` L'action et le Controller associé peuvent etre differents.
+
+- Puis dans ```app/views/layouts/application.html.erb```,
+Rajouter :  
+```
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+```
+
+```rails s``` Pour tester ```localhost:3000/users/sign_up```
+
+
+
+
 
 

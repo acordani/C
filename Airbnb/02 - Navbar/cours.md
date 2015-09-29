@@ -70,12 +70,42 @@ par: <%= current_user.email %>
 
 Et ensuite, afin de savoir si une personne est connéctée, devise nous donne un mot clé: user_signed_in?
 
-Donc, on met: <% if user_signed_in? %>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Your Trips</a></li>
-                  <li><a href="#">Wish Lists</a></li>
-                  <li><%= link_to "Edit Profile", </a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
+Donc, on met: 
+
+  <ul class="dropdown-menu">
+    <% if user_signed_in? %>
+      <li><a href="#">Your Trips</a></li>
+      <li><a href="#">Wish Lists</a></li>
+      <li><%= link_to "Edit Profile", </a></li>
+      <li role="separator" class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    <% else %>
+      <%= link_to "Log In", new_user_session_path %>
+      <%= link_to "Sign Up", new_user_registration_patg %>
+    <% end %>
+    
+    Authenticate with full name
+    
+  rails g migration AddFullNameToUser fullname:string
+  
+  rake db:migrate
+  
+  model User
+  
+  Rajouter:
+  validates :fullname, presence: true, length: {maximum: 50}
+    
+  app/controller/application_controller
+  
+  Rajouter:
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  protected
+  
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(sign_up)  <<  :fullname
+    devise_parameter_sanitizer.for(account_update)  <<  :fullname
+  end
+  
+          
 

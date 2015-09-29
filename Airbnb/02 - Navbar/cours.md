@@ -1,13 +1,13 @@
-Aller sur ce lien : http://getbootstrap.com/components/#navbar
+- Aller sur ce lien : http://getbootstrap.com/components/#navbar
 
-Copier le code html de la navbar.
+- Copier le code html de la navbar.
 
-Puis se rendre dans son code. Dans le dossier views, créer un nouveau dossier shared.
+- Puis se rendre dans son code. Dans le dossier views, créer un nouveau dossier shared.
 
-Puis créer un fichier _nav.html.erb
+- Puis créer un fichier _nav.html.erb
 
-Copier le code de la navbar précédemment copié sur le site bootstrap
-
+- Copier le code de la navbar précédemment copié sur le site bootstrap
+```
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -61,17 +61,18 @@ Copier le code de la navbar précédemment copié sur le site bootstrap
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+```
 
-Remplacer le mot Brand dans : <a class="navbar-brand" href="#">Brand</a>
-par le nom du site dc ici Airbnb
+-Remplacer le mot Brand dans : ```<a class="navbar-brand" href="#">Brand</a>```
+par le nom du site donc ici Airbnb
 
-Remplacer Dropdown dans <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-par: <%= current_user.email %>
+Remplacer Dropdown dans ```<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>```
+par: ```<%= current_user.email %>```
 
-Et ensuite, afin de savoir si une personne est connéctée, devise nous donne un mot clé: user_signed_in?
+Et ensuite, afin de savoir si une personne est connectée, devise nous donne un mot clé: ```user_signed_in?```
 
 Donc, on met: 
-
+```
   <ul class="dropdown-menu">
     <% if user_signed_in? %>
       <li><a href="#">Your Trips</a></li>
@@ -84,6 +85,6 @@ Donc, on met:
       <%= link_to "Sign Up", new_user_registration_patg %>
     <% end %>
     
-    
+   ``` 
           
 

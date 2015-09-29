@@ -66,12 +66,12 @@
 - Remplacer le mot Brand dans : ```<a class="navbar-brand" href="#">Brand</a>```
 par le nom du site donc ici Airbnb
 
-Remplacer Dropdown dans ```<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>```
+- Remplacer Dropdown dans ```<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>```
 par: ```<%= current_user.email %>```
 
-Et ensuite, afin de savoir si une personne est connectée, devise nous donne un mot clé: ```user_signed_in?```
+- Et ensuite, afin de savoir si une personne est connectée, devise nous donne un mot clé: ```user_signed_in?```
 
-Donc, on met: 
+- Donc, on met: 
 ```
   <ul class="dropdown-menu">
     <% if user_signed_in? %>

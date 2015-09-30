@@ -102,7 +102,14 @@ Entourer le code par les balises class de bootstrap
 </div>
 ```
   
-
+```         
+  git add .
+  git commit -m "Building Navbar with Partial View'
+  git push origin master
+  
+  git push heroku master
+  heroku run rake db:migrate
+``` 
 
 
 

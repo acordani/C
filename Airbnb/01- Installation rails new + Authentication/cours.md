@@ -90,6 +90,19 @@ Rajouter :
 
 ```rails s``` Pour tester ```localhost:3000/users/sign_up```
 
+- Dans ```views/devise/password registrations et sessions```
+Entourer le code par les balises class de bootstrap
+```
+<div clas="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+     ...
+    </div>
+  </div>
+</div>
+```
+  
+
 
 
 

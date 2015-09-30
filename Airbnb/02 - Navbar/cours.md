@@ -87,4 +87,12 @@ par: ```<%= current_user.email %>```
     
    ``` 
           
+  ```         
+  git add .
+  git commit -m "Building Navbar with Partial View'
+  git push origin master
+  
+  git push heroku master
+  ``` 
+  
 

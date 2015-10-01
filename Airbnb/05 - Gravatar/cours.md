@@ -32,6 +32,7 @@ Puis aller dans ``` stylesheets/layout/_navbar.scss```
   width:100%;
 }
 ``` 
+
 ```         
   git add .
   git commit -m "Add Gravatar'

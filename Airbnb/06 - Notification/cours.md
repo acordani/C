@@ -10,7 +10,10 @@ Et en dessous de ```//= require jquery_ujs```, rajouter:
 ```@import "toastr";```
 
 - Puis dans ```app/views/shared```, rajouter un nouveau partial:
-```_message.html.erb```
+
+```
+_message.html.erb
+```
 
 ```
 <% unless flash.empty? %>
@@ -40,7 +43,9 @@ A la premiere ligne, on a besoin de verifier que le flash n'est pas vide
 Ca fonctionne pour les alerts mais pas pour les erreurs sur les formulaires:
 
 - Aller dans ```app/views/shared```, rajouter un nouveau partial:
-```_devisemes.html.erb```
+```
+_devisemes.html.erb
+```
 
 ```
 <% unless resource.errors.empty? %>

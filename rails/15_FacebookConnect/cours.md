@@ -111,7 +111,61 @@ On va seter le provider, l'uid et l'email.
 Ensuite, on va lui mettre un password au pif car devise en a besoin d'un.
 Ensuite on stocke first name te last name, on stocke aussi la photo et le token
 
-18:00
+Dc grace à cette methode, on va pouvoir créer un utilisateur en bdd sans l'aide de formulaire.
+
+# app/models/user.rb
+class User < ActiveRecord::Base
+  def self.find_for_facebook_oauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]  # Fake password for validation
+      user.first_name = auth.info.first_name
+      user.last_name = auth.info.last_name
+      user.picture = auth.info.image
+      user.token = auth.credentials.token
+      user.token_expiry = Time.at(auth.credentials.expires_at)
+    end
+  end
+end
+
+Ensuite on va créer un nouveau controller: omniauth_callbacks_controller.rb
+
+Ul va recevoir le callback de facebook. Dès qu'on c'est loggué correctement dans facebook, ca revient dans notre application rails et du coup ca va taper cette methode:
+
+Elle va demander au modele User; est ce qu'il y a un User qui existe et s'il n'existe pas, on va le créer te on va sign_in le User et ducoup ca revient à la page ou on était avant.
+
+Pourquoi user.persisted?
+Si pour une raison qulconque, le User n'est pas créé (par exemple si il n'y a pas l'email),le User Devise n'est pas valide. Ds ce cas là,on va vers le else qui redirige sur une creation d'un compte classiquement.
+
+# app/controllers/users/omniauth_callbacks_controller.rb
+
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  def facebook
+    user = User.find_for_facebook_oauth(request.env['omniauth.auth'])
+
+    if user.persisted?
+      sign_in_and_redirect user, event: :authentication
+      set_flash_message(:notice, :success, kind: 'Facebook') if is_navigational_format?
+    else
+      session['devise.facebook_data'] = request.env['omniauth.auth']
+      flash[:alert] = "We need your email"
+      redirect_to new_user_registration_url
+    end
+  end
+end
+
+Maintenant si on fait un rails s.
+Cela fonctionne.
+
+Si on veut recuperer la photo de profile de facebook: current_user.picture
+
+Si on veut mettre un sign in with facebook par exemple dans la navbar:
+
+<%= link_to "Sign In with facebook", omniauth_authorize_path('user','facebook') %>
+
+32:00
 
 
   

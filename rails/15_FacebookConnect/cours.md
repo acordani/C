@@ -183,6 +183,14 @@ Si on veut mettre un sign in with facebook par exemple dans la navbar:
 <%= link_to "Sign In with facebook", omniauth_authorize_path('user','facebook') %>
 ``` 
 
+Routes
+
+Quelques changements:
+
+devise_for :user, path: '',
+                  path_name: { sign_in: 'login', sign_out: 'logout', edit: 'profile' },
+                  controller: { omniauth_callbacks: 'omniauth_callbacks' }
+
 32:00
 
 

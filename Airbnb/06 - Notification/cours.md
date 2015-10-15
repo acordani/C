@@ -1,3 +1,5 @@
+### With Toastr-rails
+
 - Ajouter ```gem 'toastr-rails'```   au gemfile
 
 - bundle install

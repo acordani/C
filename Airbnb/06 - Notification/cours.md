@@ -72,3 +72,49 @@ La meme chose dans ```registration/new.html.erb``` et ```edit.html.erb```
   
   git push heroku master
 ``` 
+
+### With Bootstrap
+
+- Aller dans ```app/views/layout```
+- Retirer les alerts:
+```
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+```
+- Remplacez par:
+```
+<% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <div class="alert alert-<%= name == "notice" ? "success" : "danger" %> alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>
+      <% end %> 
+```
+
+- Pour les erreurs de formulaire, aller dans ``` app/helpers```
+- créer un fichier ```devise_helper.rb```
+```
+module DeviseHelper
+  def devise_error_messages!
+    return '' if resource.errors.empty?
+        
+    messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
+    sentence = I18n.t('errors.messages.not_saved', count: resource.errors.count,
+      resource: resource.class.model_name.human.downcase)
+
+    html = <<-HTML
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+      </button>
+      <h4>#{sentence}</h4>
+      #{messages}
+    </div>
+    HTML
+
+    html.html_safe
+  end
+end
+```

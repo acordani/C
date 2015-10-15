@@ -16,29 +16,29 @@ def show
   @room = Room.find(params[:id])
 end
 
-Comme on a besoin aussi de Room.find(params[:id]), dans edit et update, on va créer une methode set_room en private
-
+Comme on a besoin aussi de ```Room.find(params[:id])```, dans edit et update, on va créer une methode ```set_room``` en private
+```
 private
 def set_room
   @room = Room.find(params[:id])
 end
+```
+Puis on met en ```before_action :set_room, only: [:show, :edit , :update]```
 
-Puis on met en before_action :set_room, only: [:show, :edit , :update]
-
-Puis toujours en private on crée une methode room_params
-
+Puis toujours en private on crée une methode ```room_params```
+```
 def room_params
   params.require(:room).permit(:home_type, :room_type, :accommodate, :bed_room, :bath_room, :listing_name, :summary, :address, :is_tv, :is_kitchen, :is_air, is_heating,is_internet, :price, :active)
 end
-
+```
 puis on crée la methode new
-
+```
 def new
   @room = current_user.rooms.build
 end
-
+```
 puis la methode create
-
+```
 def create
   @room = current_user.rooms.build(room_params)
   if @room.save
@@ -47,12 +47,28 @@ def create
     render :new
   end
 end
-
+```
 Puis la methode update
-
+```
 def update
   if @room.update(room_params)
-    redirect_to @room, notice:"
+    redirect_to @room, notice:"Updated ..."
+  else
+    render :edit
+  end
+end
+```
+
+Afin d'être certain que l'utilisateur soit connecté pour afficher ces pages(a l'exception de show), on ajoute:
+```
+before_action :authenticate_user!, except :[:show]
+```
+
+Puis on va ds ```config/routes```
+```
+resources :rooms, only: [:index, :new, :create, :show, :edit, :update]
+```
+
 
 
   

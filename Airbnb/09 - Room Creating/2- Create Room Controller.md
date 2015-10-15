@@ -15,6 +15,7 @@ Ici on demnde d'afficher les rooms de l'utisateur enrregistré(```current_user``
 def show
   @room = Room.find(params[:id])
 end
+```
 
 Comme on a besoin aussi de ```Room.find(params[:id])```, dans edit et update, on va créer une methode ```set_room``` en private
 ```
@@ -65,6 +66,7 @@ before_action :authenticate_user!, except :[:show]
 ```
 
 Puis on va ds ```config/routes```
+
 ```
 resources :rooms, only: [:index, :new, :create, :show, :edit, :update]
 ```

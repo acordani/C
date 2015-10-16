@@ -1,7 +1,7 @@
 - Dans asset/stylesheets/components créer un nouveau fichier _form.scss
 - Dans asset/stylesheets/components/index.sccs, rajouter @import "form";
 - ouvrir _form.scss:
-
+```
 label {
   color: #565a5c;
   font-size: 1.1em;
@@ -52,3 +52,4 @@ input[type="checkbox"]:checked:before {
   width: 1.25em;
   color: #ff5a5f;
 }
+```

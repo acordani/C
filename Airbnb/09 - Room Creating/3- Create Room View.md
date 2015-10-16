@@ -1,5 +1,5 @@
 - Créer un partial pour le formulaire : Dans app/views/room/ .. _form.html.erb
-
+```
 <div class="panel panel-default">
   <div class="panel-heading">
     Create your beautiful place
@@ -32,3 +32,7 @@
       <% end %>
   </div>
 </div>
+```
+
+Puis dans ```new.html.erb``` et dans ```edit.html.erb```:
+```<%= render 'form' %>```

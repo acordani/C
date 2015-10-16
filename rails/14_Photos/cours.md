@@ -1,32 +1,32 @@
 ## Photos
 
-Partie 1
-
+#Partie 1
+```
 rails g model Photo room:references
 rails g paperclip photo image(generate a new fichier of migration image to photo-
 rake db:migrate
-
-Dans app/models/photo
-
+```
+Dans ```app/models/photo```
+```
 class Photo < ActiveRecord::Base
   belongs_to :room
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 end
+```
+Dans ```app/models/room```
 
-Dans app/models/room
+Ajouter: ```has_many :photos```
 
-Ajouter: has_many :photos
+Dans ```config/routes```
 
-Dans config/routes
+Ajouter : ```resources :photos```
 
-Ajouter : resources :photos
+#Partie 2
 
-Partie 2
-
-App/controllers/rooms_controller
-
+```App/controllers/rooms_controller```
+```
 def show
   @photos = @room.photos
 end
@@ -71,8 +71,8 @@ def create
       redirect_to root_path, notice: "You don't have permission."
     end
   end
-
-  Partie 3
+```
+  #Partie 3
 
   App/views/rooms/_form.html.erb
 

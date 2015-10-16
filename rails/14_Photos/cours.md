@@ -17,7 +17,10 @@ end
 ```
 Dans ```app/models/room```
 
-Ajouter: ```has_many :photos```
+Ajouter:
+```
+has_many :photos
+```
 
 Dans ```config/routes```
 
@@ -25,7 +28,10 @@ Ajouter : ```resources :photos```
 
 #Partie 2
 
-```App/controllers/rooms_controller```
+```
+App/controllers/rooms_controller
+```
+
 ```
 def show
   @photos = @room.photos
@@ -73,13 +79,13 @@ def create
   end
 ```
   #Partie 3
-
-  App/views/rooms/_form.html.erb
-
-  Ajouter au form_for ou simple_form: , html: {multipart: true}
+```
+App/views/rooms/_form.html.erb
+```
+  Ajouter au ```form_for``` ou ```simple_form: , html: {multipart: true}```
 
   Puis à l'endroit du formulaire ou il y aura l'upload d'images:
-
+```
   <div class="row">
     <div class="col-md-4">
       <div class="form-group">
@@ -92,12 +98,13 @@ def create
   </div>
 
   <div id="photos"><%= render 'photos/list' %>
+```
 
+Dans ```App/views```, créer un nouveau dossier photos
 
-Dans App/views, créer un nouveau dossier photos
+Puis dans le fichier ```_list.html.erb```
 
-Puis dans le fichier _list.html.erb
-
+```
 <% if @photos %>
   <div class="row">
     <% @photos.each do |photo| %>
@@ -118,7 +125,7 @@ Puis dans le fichier _list.html.erb
     <% end %>
   </div>
 <% end %>
-
+```
 
 ##Scrapping
 

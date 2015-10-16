@@ -127,6 +127,41 @@ Puis dans le fichier ```_list.html.erb```
 <% end %>
 ```
 
+Dans ```assets/stylesheets/components``` , créer un fichier ```_photos.scss```
+dans ```assets/stylesheets/components/index.scss```, rajouter: ```@import "photos";```
+Puis dans ```_photos.scss```:
+
+```
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.panel-heading.preview {
+  padding: 0;
+}
+
+.panel-heading.preview img{  
+  width: 100%;
+}
+```
+
 ##Scrapping
 
 créer un nouveau fichier: wiki_scrapper.rb
@@ -138,3 +173,4 @@ url = "https://en.wikipedia.org/wiki/List_of_current_NBA_team_rosters"
 page = Nokogiri::HTML(open(url))
 
 puts page
+

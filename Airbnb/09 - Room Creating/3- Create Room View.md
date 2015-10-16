@@ -1,0 +1,1 @@
+- Créer un partial pour le formulaire : Dans app/views/room/ .. _form.html.erb

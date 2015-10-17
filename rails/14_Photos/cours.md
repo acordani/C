@@ -161,7 +161,9 @@ Puis dans ```_photos.scss```:
   width: 100%;
 }
 ```
+#Partie 4
 
+Dans app/controller, créer un nouveau controller : photos_controller.rb
 ##Scrapping
 
 créer un nouveau fichier: wiki_scrapper.rb

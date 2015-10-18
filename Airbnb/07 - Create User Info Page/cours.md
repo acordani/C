@@ -1,29 +1,38 @@
 ## Create User Info Page
 
 Ajouter deux champs au User:
+```
 rails g migration AddExtraFieldsToUser phone_number:string description:text
-
+```
+```
 rake db:migrate
+```
 
-Ouvrir config/routes.rb
+Ouvrir ```config/routes.rb```
 
+```
 resources :users, only: [:show]
+```
 
 Ca va permettre de créer le path pour le show de User seulement
 
 Créons maintenant le users_controller.
 
-Donc, on va dans Controller et on crée un nouveau fichier: users_controller.rb
+Donc, on va dans Controller et on crée un nouveau fichier: ```users_controller.rb```
 
+```
 Class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
 end
+```
 
 Maintenant créons un nouveau repertoire dans Views : users
 
-Et créons le fichier showw.html.erb
+Et créons le fichier ```show.html.erb```
+
+```
 <div class="container">
   <div class="row">
     <div class="col-md-3">
@@ -45,9 +54,11 @@ Et créons le fichier showw.html.erb
       </div>
     </div>
   </div>
+```
   
-  Ouvrons maintenant App/assets/stylesheets et allons dans application.scss
+Ouvrons maintenant ```App/assets/stylesheets``` et allons dans application.scss
   
+```
   body {
     color: #565a5c;
     background-color: F8F8F8;
@@ -124,4 +135,4 @@ Et créons le fichier showw.html.erb
   font-weight: 500;
   line-height: 25px;
 }
-
+```

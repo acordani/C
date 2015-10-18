@@ -92,13 +92,13 @@ App/views/rooms/_form.html.erb
       <div class="form-group">
         <span class="btn btn-default btn-file">
           <i class="fa fa-cloud-upload fa-lg"> </i>Upload Photos
-          <%= file_field_tag "image[]", type: :file, multiple: true %>
+          <%= file_field_tag "images[]", type: :file, multiple: true %>
         </span>
       </div>
     </div>
   </div>
 
-  <div id="photos"><%= render 'photos/list' %>
+  <div id="photos"><%= render 'photos/list' %></div>
 ```
 
 Dans ```App/views```, créer un nouveau dossier photos

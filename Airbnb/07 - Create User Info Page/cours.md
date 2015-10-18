@@ -21,7 +21,7 @@ Créons maintenant le users_controller.
 Donc, on va dans Controller et on crée un nouveau fichier: ```users_controller.rb```
 
 ```
-Class UsersController < ApplicationController
+class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end

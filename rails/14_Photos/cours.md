@@ -1,5 +1,6 @@
 ## Photos
 
+Ouvez ```gemfile``` et ```gem 'paperclip'``` & ```bundle install```
 #Partie 1
 ```
 rails g model Photo room:references

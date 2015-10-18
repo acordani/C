@@ -111,7 +111,7 @@ Ouvrons maintenant ```App/assets/stylesheets``` et allons dans application.scss
   color: #565a5c;
   background-color: #edefed;
   font-size: 18px;
-  font-weight: 400
+  font-weight: 400;
 }
 
 .row-space-1 {

@@ -74,7 +74,7 @@ Ouvrons maintenant ```App/assets/stylesheets``` et allons dans application.scss
     .navbar-brand {
       color: #FF5A5F;
       font-size: 2em;
-      font-weignt: 400:
+      font-weignt: 400;
       }
   }
   

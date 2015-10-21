@@ -164,7 +164,31 @@ Puis dans ```_photos.scss```:
 ```
 #Partie 4
 
-Dans app/controller, créer un nouveau controller : photos_controller.rb
+Dans ```app/controller```, créer un nouveau controller : ```photos_controller.rb```
+
+```
+class PhotosController < ApplicationController
+
+	def destroy
+		@photo = Photo.find(params[:id])
+		room = @photo.room
+
+		@photo.destroy
+		@photos = Photo.where(room_id: room.id)
+
+		respond_to :js
+	end
+end
+```
+
+Dans ```Views/photos```, ajouter un nouveau fichier : ```destroy.js.erb```
+
+```
+$('#photos').html("<%= j render 'photos/list' %>")
+```
+
+```Rails s```
+
 ##Scrapping
 
 créer un nouveau fichier: wiki_scrapper.rb

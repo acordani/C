@@ -60,8 +60,8 @@ end
 
 ```
 def import
-    Company.import(params[:file])
-    redirect_to companies_path, notice: "Companies addes succesfully"
+  Company.import(params[:file])
+  redirect_to companies_path, notice: "Companies addes succesfully"
 end
 ```
 
@@ -82,6 +82,7 @@ end
 
 ```Views/index.html.erb```
 
+
 ```
 <h3>Import Companies</h3>
 <%= form_tag import_companies_path, multipart: true do %>
@@ -91,9 +92,9 @@ end
 ```
 
 
-```Config/application.rb```
+``Config/application.rb```
 
-```require 'csv'```
+```require 'csv' ```
 
 
 

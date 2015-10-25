@@ -3,8 +3,9 @@
 
 ### Airbnb
 
-ouvrir sublime et créer un nouveau fichier: airbnb_scraper.rb
+ouvrir sublime et créer un nouveau fichier: ```airbnb_scraper.rb```
 
+```
 require 'open-uri'
 require 'nokogiri'
 
@@ -27,37 +28,47 @@ end
 page.css('div.text-muted.listing-location.text-truncate').each do |line|
   puts line.text
 end
+```
 
 
 
-
-Puis dans le terminal : ruby airbnb_scraper.rb
+Puis dans le terminal : ```ruby airbnb_scraper.rb```
 
 ### How to Build a CSV Uploader into a Ruby on Rails Application
 
 https://www.youtube.com/watch?v=W8pohTautj8
 
+```
 rails g scaffold Company name:string manager:string status:string terms:integer
 
 rake db:create
 
 rake db:migrate
+```
 
-routes. rb :
 
+```routes. rb```
+
+```
 resources :companies do
     collection { post :import }
 end
-  
-company_controller.rb
+```
 
+
+```company_controller.rb```
+
+```
 def import
     Company.import(params[:file])
     redirect_to companies_path, notice: "Companies addes succesfully"
 end
+```
 
-Model company.rb
 
+```Model company.rb```
+
+```
 class Company < ActiveRecord::Base
 
   def self.import(file)
@@ -67,18 +78,22 @@ class Company < ActiveRecord::Base
   end
 
 end
+```
 
-Views/index.html.erb
+```Views/index.html.erb```
 
+```
 <h3>Import Companies</h3>
 <%= form_tag import_companies_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Upload Companies" %>
 <% end %>
+```
 
-Config/application.rb
 
-require 'csv'
+```Config/application.rb```
+
+```require 'csv'```
 
 
 

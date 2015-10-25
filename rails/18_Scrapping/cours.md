@@ -46,17 +46,20 @@ rake db:create
 rake db:migrate
 ```
 
+Puis dans 
 
 ```routes. rb```
 
+Ecrire: 
 ```
 resources :companies do
     collection { post :import }
 end
 ```
 
+Puis dans ```company_controller.rb```
 
-```company_controller.rb```
+Ecrire
 
 ```
 def import
@@ -79,10 +82,9 @@ class Company < ActiveRecord::Base
 
 end
 ```
+Puis dans : ```Views/index.html.erb```
 
-```Views/index.html.erb```
-
-
+Ecrire
 ```
 <h3>Import Companies</h3>
 <%= form_tag import_companies_path, multipart: true do %>
@@ -91,9 +93,9 @@ end
 <% end %>
 ```
 
+Et dans ``Config/application.rb```
 
-``Config/application.rb```
-
+Ecrire:
 ```require 'csv' ```
 
 

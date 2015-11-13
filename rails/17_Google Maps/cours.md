@@ -62,7 +62,7 @@ Dans le formulaire à l'endroit ou il doit y avoir l'autocomplete, ajouter:
 
 Puis aller dans https://console.developers.google.com
 
-Aller dans le projet, activer une Google Maps JavaScript API
+Aller dans le projet, activer une Google Maps JavaScript API ey Google Maps Geocoding API
 
 Puis aller ds Identifiant:
 

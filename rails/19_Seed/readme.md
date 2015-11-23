@@ -1,5 +1,6 @@
-Exemple de Seed:
+### Exemple de Seed:
 
+```
 Restaurant.destroy_all
 restaurants_attributes = [
   {
@@ -22,5 +23,7 @@ restaurants_attributes = [
   }
 ]
 restaurants_attributes.each { |params| Restaurant.create!(params) }
+```
 
-Puis rake db:seed
+
+Puis ```rake db:seed```

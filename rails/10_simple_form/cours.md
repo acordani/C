@@ -32,6 +32,8 @@ C'est un helper, comme ```link_to``` qui genere une balise ```a```; ```image_tag
 ```
 
   Si on veut ajouter des labels, on ajoute ```f.label :name, "enter a name"``` par exemple
+  
+  ![1](https://cloud.githubusercontent.com/assets/10654877/11336124/f3a5dd14-91e2-11e5-91d1-3f17a7c62077.jpg)
 
 Ce helper, pour se construire, il a besoin qu'on lui donne un objet ```@restaurant```, car apres, il va generer des parametres imbriqués comme restaurant[name]
 

@@ -1,9 +1,12 @@
-rails g model Listing title:string description:text city:string category:string
+  rails g model Listing title:string description:text city:string category:string
 
-rake db:migrate
+  rake db:migrate
 
-Routes
+###Routes
 
-resources :listings
+  resources :listings
+
+
+  rails g controller listings
 
 

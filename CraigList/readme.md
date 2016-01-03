@@ -8,4 +8,4 @@ Donc le le model Listing à plusieurs champs:
     t.string   "title"
     t.text     "description"
     t.string   "city"
-    t.integer  "category"
+    t.string  "category"

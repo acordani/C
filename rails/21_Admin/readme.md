@@ -13,4 +13,8 @@ end
 ```
 
   rake db:migrate
+  
+  
+  Modifier un element dans la console
+  Neighborhood.where(id:12).update_all(citysearch_id:1)
 

@@ -74,7 +74,7 @@ Pusher sur Heroku : figaro heroku:set -e production
 
 Puis, créer une clé Browser et la mettre dans Views/layout/application.html.erb
 
-Inserer <!-- Include Google Maps JS API -->
+Inserer 
     <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBwfMOrUhpkgF">
 

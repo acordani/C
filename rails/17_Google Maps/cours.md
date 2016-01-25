@@ -81,6 +81,25 @@ Inserer <!-- Include Google Maps JS API -->
 En remplacant apres &key par la nouvelle clé browser
 
 
+Pour avoir un cercle sur la map:
 
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      circle = [{lng: <%= @user.longitude %>, lat: <%= @user.latitude %>, radius: 200}]
+      circle_options = { strokeColor:"#FECC1F",strokeOpacity: 1, strokeWeight: 3, fillColor: 'transparent' }
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.addCircles(circle, circle_options);
+        handler.addCircles(circle);
+        handler.getMap().setOptions({ scrollwheel: false });
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(14);
+      });
+    })
+  <% end %>
+<% end %>
 
 

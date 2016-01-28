@@ -27,6 +27,8 @@ et Recuperer le code a mettre. Ici Un code pour modifier à 9€.
 
 Recuperer les noms de database: ```heroku pg:info```
 
+![heroku3](https://cloud.githubusercontent.com/assets/10654877/12644381/d0775df4-c5c2-11e5-9fad-6e44d3c5ec3c.jpg)
+
 Et Recuperer les bases de données ```heroku pg:copy DATABASE_URL HEROKU_POSTGRESQL_NAVY_URL --app armefatale```
 
 - DATABASE_URL ancienne DataBase

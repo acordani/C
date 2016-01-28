@@ -20,6 +20,8 @@ Mettre en maintenance ```heroku maintenance:on```
 
 Aller sur ```https://elements.heroku.com/addons/heroku-postgresql```
 
+![heroku1](https://cloud.githubusercontent.com/assets/10654877/12644315/54036cae-c5c2-11e5-9497-ad73bf4fc299.jpg)
+
 et Recuperer le code a mettre. Ici Un code pour modifier à 9€.
 ```heroku addons:create heroku-postgresql:hobby-basic```
 

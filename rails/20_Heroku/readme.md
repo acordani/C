@@ -35,3 +35,5 @@ Et Recuperer les bases de données ```heroku pg:copy DATABASE_URL HEROKU_POSTGRE
 - DATABASE_URL HEROKU_POSTGRESQL_NAVY_URL, nouvelle Database
 - Et finir avec --app NOMDUSITE (Recuperé sur lr dashbord d'heroku dans les app)
 
+![heroku5](https://cloud.githubusercontent.com/assets/10654877/12644436/2a0a443a-c5c3-11e5-8785-faacd5d167f6.jpg)
+

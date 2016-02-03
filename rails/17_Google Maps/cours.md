@@ -103,3 +103,22 @@ Pour avoir un cercle sur la map:
 <% end %>
 
 
+Si on veut avoir une map qui s'ouvre sur un clic de lien:
+$('a#openMap').bind('click',function(){
+            if($(this).hasClass('active')){
+                $(this).removeClass('active').html('<span class="icon-map2"></span> Voir la carte');
+                $('div#containerMap').animate({height:"0px"},1000);
+            }else{
+                $(this).addClass('active').html('<span class="icon-map2"></span> Fermer la carte');
+                $('div#containerMap').animate({height:"300px"},1000);
+            }
+            
+            
+            return false;
+        });
+        
+   Le lien est un lien a avec une id openMap:
+   
+   <li><a href="#" id="openMap"><span class="icon-map2"></span> Voir la carte</a></li>
+   
+   

@@ -37,3 +37,13 @@ Et Recuperer les bases de données ```heroku pg:copy DATABASE_URL HEROKU_POSTGRE
 
 ![heroku5](https://cloud.githubusercontent.com/assets/10654877/12644436/2a0a443a-c5c3-11e5-8785-faacd5d167f6.jpg)
 
+
+##Pbme au moment de pusher une modif sur heroku sur heroku
+
+Si au moment de pusher sur heroku des modifs, il arrive un souci comme ca, avec un rake aborted,
+
+Alors faire :
+
+```RAILS_ENV=production bundle exec rake assets:precompile```
+L'erreur va etre mise. Il n'y aura plus qu'à changer ds le code
+

@@ -12,6 +12,8 @@ Faire:
 
 ```rake db:rollback```
 
+![rollback1](https://cloud.githubusercontent.com/assets/10654877/12946381/4a31c5ea-cff4-11e5-9dcc-622998353e2c.jpg)
+
 Puis aller dans le repertoir db/migrate
 Effacer à la main la dernière migration
 

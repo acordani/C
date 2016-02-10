@@ -1,0 +1,78 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 Ce sont des composants qui doivent encapsuler sa logique de representation(comment il s\'92affiche) et sa logique d\'92action (qu\'92est ce qui se passe quand on clique dessus).\
+Donc un composant va \'eatre caract\'e9ris\'e9 par 3 choses:\
+- a va \'eatre un objet qui va avoir une m\'e9thode render qui renverra le html du composant\
+- va avoir des propri\'e9t\'e9s (variables d\'92instances qui auront une valeur au debut et qui ne bougera plus)\
+- va avoir des \'e9tats (variables d\'92instance qui peuvent changer). Etat interne de l\'92objet\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+Sur producthunt dans le composant du triangle pour upvoter,\
+le state c\'92est le nbre de vote et si on a vot\'e9 ou pas (true ou false).\
+le props . car lorsqu\'92on clique, l\'92url c\'92est le posts/id/votes. le props c\'92est l\'92id du composant.\
+\
+11:50\
+\
+1er composant\
+\
+var Hello = React.createClass(\{\
+	render: function() \{\
+		return <div>Hello guys </div>;\
+	\}\
+\});\
+\
+React.render(<Hello />, document.body);\
+\
+var Hello, on affecte \'e0 la variable Hello la creation du composant\
+React.createClass , M\'e9thode qui permet de cr\'e9er le composant\
+Tout composant doit rendre une m\'e9thode render qui a comme fonction de rendre du HTML.\
+\
+Pour rendre le composant sur la page, on va utiliser en dehors de la variable Hello, React.render.\
+Et entre parenth\'e8se(2 arguments), on va avoir:\
+-le nom du composant \
+- l\'92endroit du DOM ou on veut que le composant s\'92affiche\
+\
+On dit qu\'92on l\'92a append au document.body\
+Cela donne: \
+\
+> Hello guys\
+\
+Ca c\'92est un composant de base, sans \'e9tat, sans props\
+\
+Si on veut ajouter, une props,\
+on va suite \'e0 return <div>Hello \'85\
+On va ajouter \{this.props.name\}\
+return <div>Hello \{this.props.name\}</div>;\
+CA veut dire qu\'92on a la props name a notre disposition\
+Du coup on moment de l\'92initialisation du composant, quand on va rendre le composant sur la page, on va lui passer un attribut qui va devenir une props\
+React.render(<Hello name=\'ab\'a0Boris\'a0\'bb />, document.body);\
+\
+> Hello Boris\
+\
+Du coup Hello est un composant React qui prend comme attribut name et name devient une propri\'e9t\'e9 accessible ds le composant.\
+our acquired aux porpori\'e9t\'e9 du composant, on fait this.props, ca ns donne un objet js surlequel on peut faire.quelquechose, et l\'e0, on a fait .name car on l\'92a appel\'e9 name.\
+\
+On pourra ensuite le repeter plusieurs fois dans la page.\
+Pour se faire, on va ds la page html, mettre 2 divs\
+<div id=\'ab\'a0div1\'a0\'bb></div>\
+<div id=\'ab\'a0div2\'a0\'bb></div>\
+\
+Et ds le jsx, on va avoir au moment du render:\
+\
+React.render(<Hello name=\'ab\'a0Boris\'a0\'bb, document.getElementById(\'91div1\'92));\
+React.render(<Hello name=\'ab\'a0Romain\'a0\'bb, document.getElementById(\'91div2\'92));\
+\
+> Hello Boris\
+Hello Romain\
+\
+Le composant ne changera pas\
+\
+On va maintenant ajouter du state\
+0:19\
+Pour se faire, on va int\'e9grer className qui va nous permettre d\'92ajouter une classe au nom en fonction d\'92un bool\'e9en.\
+\
+}

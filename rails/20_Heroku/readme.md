@@ -37,7 +37,9 @@ Et Recuperer les bases de données ```heroku pg:copy DATABASE_URL HEROKU_POSTGRE
 
 ![heroku5](https://cloud.githubusercontent.com/assets/10654877/12644436/2a0a443a-c5c3-11e5-8785-faacd5d167f6.jpg)
 
+Puis faire : 
 
+```heroku pg:promote HEROKU_POSTGRESQL_NAVY_URL``` HEROKU_POSTGRESQL_NAVY_URL étant le nom de la nouvelle BDD
 
 ##Pbme au moment de pusher une modif sur heroku sur heroku
 

@@ -49,3 +49,29 @@ On va ajouter ```{this.props.txt}```
 ```return <div>Hello World {this.props.txt}</div>;```
 
 ![react3](https://cloud.githubusercontent.com/assets/10654877/13070844/c92c8bba-d48f-11e5-8f0a-6858480cd8d1.jpg)
+
+3- State basic
+
+Le state permet de faire varier l'état d'un composant.
+
+On va commencer par lui donner un état initial:
+```getInitialState: function() {````
+
+Cette fonction va retourner un objet qui aura comme clé txt:
+```txt:"This is the state text````
+
+Pour afficher le state sur l'écran, on va mettre state au lieu de props
+```return <div>Hello World {this.state.txt}</div>;````
+
+````
+var App = React.createClass({
+    getInitialState: function() {
+    return {txt:"this is the state text"}
+    },
+    render: function() {
+        return <div>Hello World {this.state.txt}</div>;
+    }
+});
+ 
+React.render(<App txt="This is the txt"/>, document.body);
+```

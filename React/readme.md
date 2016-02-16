@@ -40,7 +40,12 @@ Au moment de l’initialisation du composant, quand on va rendre le composant su
 
 ```React.render(<App txt="This is the txt"/>, document.body);````
 
+
+
 Puis, on va suite à ```return <div>Hello …```
+
 On va ajouter ```{this.props.txt}```
+
 ```return <div>Hello World {this.props.txt}</div>;```
 
+![react3](https://cloud.githubusercontent.com/assets/10654877/13070844/c92c8bba-d48f-11e5-8f0a-6858480cd8d1.jpg)

@@ -34,3 +34,13 @@ Cela va permettre d'afficher ```Hello World```
 
 ![react2](https://cloud.githubusercontent.com/assets/10654877/13070498/62eddf22-d48d-11e5-8ecc-a6c9b7412a95.jpg)
 
+2- Propriété du composant
+
+Au moment de l’initialisation du composant, quand on va rendre le composant sur la page, on va lui passer un attribut qui va devenir une propriété(props)
+
+```React.render(<App txt="This is the txt"/>, document.body);````
+
+Puis, on va suite à ```return <div>Hello …```
+On va ajouter ```{this.props.txt}```
+```return <div>Hello World {this.props.txt}</div>;```
+

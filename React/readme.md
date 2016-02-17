@@ -75,3 +75,5 @@ var App = React.createClass({
  
 React.render(<App txt="This is the txt"/>, document.body);
 ```
+
+![react5](https://cloud.githubusercontent.com/assets/10654877/13085939/072ed19c-d4e1-11e5-868d-0e375ee14e43.jpg)

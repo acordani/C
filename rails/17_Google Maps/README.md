@@ -21,11 +21,11 @@ On clic sur create.
 
 
 ------------------------------------------------------------------------
-Auto complete
+###Auto complete
 
-Créer un fichier: Assets/javascripts/autocomplete.js
+Créer un fichier: ```Assets/javascripts/autocomplete.js```
 
-
+```
 $(document).ready(function() {
 
    var onPlaceChanged = function() {
@@ -46,11 +46,12 @@ $(document).ready(function() {
     initializeAutocomplete('user_input_autocomplete_address');
   });
 });
+```
 
 
 Dans le formulaire à l'endroit ou il doit y avoir l'autocomplete, ajouter:
 
-
+```
         <div class="row">
           <fieldset>
             <div class="form-group">
@@ -59,14 +60,15 @@ Dans le formulaire à l'endroit ou il doit y avoir l'autocomplete, ajouter:
             </div>
           </fieldset>
         </div>
+````
 
-Puis aller dans https://console.developers.google.com
+Puis aller dans ```https://console.developers.google.com```
 
 Aller dans le projet, activer une Google Maps JavaScript API ey Google Maps Geocoding API
 
 Puis aller ds Identifiant:
 
-Créer une clé serveur et la mettre dans Config/appalication.yml
+Créer une clé serveur et la mettre dans ```Config/appalication.yml```
 
 GOOGLE_API_KEY: AIz
 
@@ -75,14 +77,15 @@ Pusher sur Heroku : figaro heroku:set -e production
 Puis, créer une clé Browser et la mettre dans Views/layout/application.html.erb
 
 Inserer 
+```
     <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBwfMOrUhpkgF">
-
+```
 En remplacant apres &key par la nouvelle clé browser
 
 
 Pour avoir un cercle sur la map:
-
+```
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).on('ready', function() {
@@ -101,9 +104,12 @@ Pour avoir un cercle sur la map:
     })
   <% end %>
 <% end %>
+```
 
 
 Si on veut avoir une map qui s'ouvre sur un clic de lien:
+
+```
 $('a#openMap').bind('click',function(){
             if($(this).hasClass('active')){
                 $(this).removeClass('active').html('<span class="icon-map2"></span> Voir la carte');
@@ -116,9 +122,11 @@ $('a#openMap').bind('click',function(){
             
             return false;
         });
-        
+````
+
    Le lien est un lien a avec une id openMap:
    
+```
    <li><a href="#" id="openMap"><span class="icon-map2"></span> Voir la carte</a></li>
-   
+```
    

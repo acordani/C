@@ -76,10 +76,11 @@ Pusher sur Heroku : figaro heroku:set -e production
 
 Puis, créer une clé Browser et la mettre dans Views/layout/application.html.erb
 
-Inserer 
+Inserer juste après ```<%= yield %>```
 ```
     <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBwfMOrUhpkgF">
+    </script>
 ```
 En remplacant apres &key par la nouvelle clé browser
 

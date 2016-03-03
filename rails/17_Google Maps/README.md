@@ -96,7 +96,6 @@ Pour avoir un cercle sur la map:
       handler.buildMap({ internal: { id: 'map' } }, function(){
         markers = handler.addMarkers(<%= raw @markers.to_json %>);
         handler.addCircles(circle, circle_options);
-        handler.addCircles(circle);
         handler.getMap().setOptions({ scrollwheel: false });
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();

@@ -4,7 +4,10 @@
 \margl1440\margr1440\vieww10800\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
 
-\f0\fs24 \cf0 Ce sont des composants qui doivent encapsuler sa logique de representation(comment il s\'92affiche) et sa logique d\'92action (qu\'92est ce qui se passe quand on clique dessus).\
+\f0\fs24 \cf0 Tout dans React est un composant\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 Ce sont des composants qui doivent encapsuler sa logique de representation(comment il s\'92affiche) et sa logique d\'92action (qu\'92est ce qui se passe quand on clique dessus).\
 Donc un composant va \'eatre caract\'e9ris\'e9 par 3 choses:\
 - a va \'eatre un objet qui va avoir une m\'e9thode render qui renverra le html du composant\
 - va avoir des propri\'e9t\'e9s (variables d\'92instances qui auront une valeur au debut et qui ne bougera plus)\
@@ -54,7 +57,7 @@ React.render(<Hello name=\'ab\'a0Boris\'a0\'bb />, document.body);\
 > Hello Boris\
 \
 Du coup Hello est un composant React qui prend comme attribut name et name devient une propri\'e9t\'e9 accessible ds le composant.\
-our acquired aux porpori\'e9t\'e9 du composant, on fait this.props, ca ns donne un objet js surlequel on peut faire.quelquechose, et l\'e0, on a fait .name car on l\'92a appel\'e9 name.\
+our acquired aux propori\'e9t\'e9 du composant, on fait this.props, ca ns donne un objet js surlequel on peut faire.quelquechose, et l\'e0, on a fait .name car on l\'92a appel\'e9 name.\
 \
 On pourra ensuite le repeter plusieurs fois dans la page.\
 Pour se faire, on va ds la page html, mettre 2 divs\
@@ -74,5 +77,9 @@ Le composant ne changera pas\
 On va maintenant ajouter du state\
 0:19\
 Pour se faire, on va int\'e9grer className qui va nous permettre d\'92ajouter une classe au nom en fonction d\'92un bool\'e9en.\
+\
+\
+Commentaire dans le jsx\
+\{/* bla bla bla */\}\
 \
 }

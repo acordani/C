@@ -221,3 +221,7 @@ par:
 <p>{this.props.name} -- {this.props.price} €</p>
 ```
 
+![react](https://cloud.githubusercontent.com/assets/10654877/13730279/67c98ab4-e94b-11e5-9e9b-889a1cd900ec.jpg)
+
+### Working with Property - Function
+

@@ -81,6 +81,8 @@ React.render(<App txt="This is the txt"/>, document.body);
 
 ------------------------------------------------------------------------------------------------------------------------
 
+### Your first Component
+
 Créons une page product
 
 ```
@@ -110,6 +112,9 @@ Ca va nous rendre un boutton buy cliquable mais que ne donne rien.
 
 ![clic](https://cloud.githubusercontent.com/assets/10654877/13729969/aa7920e0-e941-11e5-9686-4004bf0a57c9.gif)
     
+    
+### Working with Event
+
 Il nous faut maintenant coder la fonction sur le clique
 On va la coder directement ds la fonction product
 
@@ -126,4 +131,30 @@ Et à l'interieur de <button>, on va rajouter
 
 this se refere à Product. Et ds Product, on va aller à la fonction buy
 
+![clic2](https://cloud.githubusercontent.com/assets/10654877/13730032/fe75c110-e943-11e5-9025-8822b9dcd87a.gif)
 
+### Working with State
+
+Afin de créer un etat, on va commencer par créer un état initial:
+On va donc créer une fonction getInitialState qui va rendre un objet qui aura comme clé qty: (quantity)
+
+````
+getInitialState: function() {
+    return {qty:0};
+  },
+````
+Ensuite, à l'interieur de la fonction buy, au lieu de alert, on va mettre:
+
+````
+buy: function() {
+    this.setState({qty: this.state.qty + 1})
+  },
+````
+
+Set state est une fonction de React qui va donner une nouvelle valeur à qty
+
+Puis, pour afficher, on va ajouter :
+
+```
+<h3>{this.state.qty} item(s)</h3>
+````

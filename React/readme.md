@@ -193,12 +193,31 @@ var ProductList = React.createClass({
 });
 ```
 
-A l'interieur de la variable ProductList, on va rendre des <Product/>
+A l'interieur de la variable ProductList, on va rendre des Product
 
 Puis, on va remplacer Product par ProductList dans React.render
 
 ````
 React.render(<ProductList/>, document.getElementById("root"));
 ````
+![product](https://cloud.githubusercontent.com/assets/10654877/13730190/d9705600-e948-11e5-9d19-497a8a85fb45.jpg)
 
+### Working with property - Data
+
+On va rajouter des props à product:
+```
+<Product name="Android" price="121"/>
+<Product name="Apple" price="123"/>
+<Product name="Sony" price="66"/>
+```
+
+Puis on va remplacer : 
+```
+<h3>Android - $199</h3>
+```
+
+par:
+```
+<p>{this.props.name} -- {this.props.price} €</p>
+```
 

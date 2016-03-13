@@ -107,4 +107,7 @@ return(
       );
 ```
 Ca va nous rendre un boutton buy cliquable mais que ne donne rien.
+
+![clic](https://cloud.githubusercontent.com/assets/10654877/13729969/aa7920e0-e941-11e5-9686-4004bf0a57c9.gif)
+    
 Il nous faut maintenant coder la fonction sur le clique

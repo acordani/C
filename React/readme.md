@@ -77,3 +77,34 @@ React.render(<App txt="This is the txt"/>, document.body);
 ```
 
 ![react5](https://cloud.githubusercontent.com/assets/10654877/13085939/072ed19c-d4e1-11e5-868d-0e375ee14e43.jpg)
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+Créons une page product
+
+```
+var Product = React.createClass({
+  render: function() {
+    return(
+      
+      
+      );
+  }
+});
+
+React.render(<Product/>, document.getElementById("root"));
+
+````
+Puis dans le return, on va mettre:
+
+````
+return(
+      <div>
+        <p>Android -- 199€</p>
+        <button>Buy</button>
+      </div>
+      );
+```
+Ca va nous rendre un boutton buy cliquable mais que ne donne rien.
+Il nous faut maintenant coder la fonction sur le clique

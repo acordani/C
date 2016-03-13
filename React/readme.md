@@ -158,3 +158,47 @@ Puis, pour afficher, on va ajouter :
 ```
 <h3>{this.state.qty} item(s)</h3>
 ````
+
+![clic3](https://cloud.githubusercontent.com/assets/10654877/13730119/0b91fe42-e947-11e5-9eb7-b495ae72b896.gif)
+
+### Reusable Components 
+
+On va créer une variable Total
+et une variable ProductList
+
+````
+var Total = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <h3>Total Cash: </h3>
+      </div>
+    );
+  }
+});
+````
+
+````
+var ProductList = React.createClass({
+  render: function() {
+    return (
+      <div>
+        <Product/>
+        <Product/>
+        <Product/>
+        <Total/>
+      </div>
+    );
+  }
+});
+```
+
+A l'interieur de la variable ProductList, on va rendre des <Product/>
+
+Puis, on va remplacer Product par ProductList dans React.render
+
+````
+React.render(<ProductList/>, document.getElementById("root"));
+````
+
+

@@ -253,3 +253,4 @@ show: function() {
     this.props.handleShow(this.props.name);
   },
 ```
+![react](https://cloud.githubusercontent.com/assets/10654877/13816966/a50d297a-eb90-11e5-95b1-b7597896d74e.gif)

@@ -225,3 +225,31 @@ par:
 
 ### Working with Property - Function
 
+On va rajouter une fonction showProduct dans la variable ProductList.
+Cette fonction va permettre d'afficher une fenetre Alert avec le nom de l'article quand on cliquera sur le bouton show de chaque article.
+
+```
+showProduct: function(name) {
+    alert("You selected " + name);
+  },
+```
+
+Et donc dans la variable Product, on va rajouter un bouton show
+
+```
+<button onClick={this.show}>Show</button>
+```
+Le probleme est :
+Lorsqu'on va cliquer sur le bouton show de Product, on veut que ce bouton soit relié à la fonction de showProduct de productList
+On va passer un props dans productList:
+
+```
+<Product name="Android" price="121" handleShow={this.showProduct}/>
+```
+Et du coup dans la variable Product, on va créer une fonction show ou on va passer le handleShow
+
+```
+show: function() {
+    this.props.handleShow(this.props.name);
+  },
+```

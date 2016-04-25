@@ -18,3 +18,7 @@ Puis aller dans le repertoir db/migrate
 Effacer à la main la dernière migration
 
 Puis ```rake db:migrate```
+
+### Chercher des données specifiques et les effacer
+
+```a = Land.where(city_id:4).delete_all```

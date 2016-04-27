@@ -53,3 +53,8 @@ Alors faire :
 
 L'erreur va etre mise. Il n'y aura plus qu'à changer ds le code
 
+##Heroku Config 
+
+Pour voir les variables d'environnement qui ont été envoyées sur heroku:
+
+```heroku config```

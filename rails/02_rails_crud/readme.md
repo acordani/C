@@ -185,22 +185,33 @@ On va faire le formulaire en dur ensuite, on va utliser un helper
   ```
   
   On peut ajouter dans form_for, un select.
+  
   Par exemple si dans le model restaurant, on avait defini des categories de restaurant:
+  
   CATEGORIES = [fast-food, restaurant] ou CATEGORIES = %w(fast-food, restaurant)
   validates :category, inclusion: {in:CATEGORIES}
   
+  
   A ce moment là, dans le form_for, on peut rajouter:
-  <%= f.select :category ,Animal::CATEGORIES, prompt: "Quelle catégorie" %>
+  
+   ```<%= f.select :category ,Animal::CATEGORIES, prompt: "Quelle catégorie" %> ```
+  
   CATEGORIES EST UNE CONSTANTE QUI EST DANS LA CLASSE
   
 
   
-Link_to genere une balise a href, form_for genere une balise form
-form_for a des sous methodes qui vont permettre de generer tous les input(text_field, number_field, submit
-si on veut rajouter un label pour chaque input, il faut rajouter f.label
+Link_to genere une balise a href, form_for genere une balise form.
+
+form_for a des sous methodes qui vont permettre de generer tous les input(text_field, number_field, submit).
+
+si on veut rajouter un label pour chaque input, il faut rajouter f.label.
+
   
 Ce helper fonctionne de la manièe suivante:
-Pour se construire, il a besoin qu'on lui donne un objet restaurant car apres, il va generer des parametres imbriqués ```(restaurant[:name], restaurant[:stars], restaurant[:address])```.
+
+Pour se construire, il a besoin qu'on lui donne un objet restaurant car apres, il va generer des parametres imbriqués:
+
+```(restaurant[:name], restaurant[:stars], restaurant[:address])```.
   
 Ce qui est bien  c'est qu'on met le meme formulaire form_for sur le new et sur l'edit. Et selon que l'objet est prérempli ou pas, il va remplir ou non le formulaire.
   

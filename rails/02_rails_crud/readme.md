@@ -135,23 +135,32 @@ Il faut créer le template: show.html.erb
 <p><%= "*" * @restaurant.stars %>
 ```
 
-Mettons le lien pour revenir au listing
+Mettons le lien pour revenir au listing.
+
 On va utiliser les prefix .
+![3jpg](https://cloud.githubusercontent.com/assets/10654877/19980343/e8651d1c-a1fd-11e6-8519-f1022cec61f5.jpg)
+
 ```<%= link_to "Back to list", restaurants_path %>```
 
 Si on veut un lien qui nous envoie ds la show view de chaque restaurant.
+
 Si on fait un rake routes, on a restaurant_path mais dans l'url il y a un id. on a donc besoin de cet id.
 
-```<%= link_to "Allez voir", restaurant_path(id: restaurant.id %>```
-ou ```<%= link_to "Allez voir", restaurant_path(restaurant) %>``` On passe l'objet. On passe le restaurant et rails sait qu'il doit trouver l'id tt seul.
+```<%= link_to "Allez voir", restaurant_path(id: restaurant.id %>``` ou
+
+```<%= link_to "Allez voir", restaurant_path(restaurant) %>``` Ici, On passe l'objet(restaurant) et rails sait qu'il doit trouver l'id tt seul.
 
 ###le new
 On y accede par la requete restaurants/new
 on crée le template new.html.erb
 et on va faire l'edit en meme temps edit.html.erb
 
-le formulaire ressemble a :
-on poste sur /restaurants. sur rake routes a create, on a l'url /restaurants
+Commençons par le formulaire :
+
+
+on poste sur ```/restaurants```. 
+
+Sur rake routes a create, on a l'url /restaurants
 On va faire le formulaire en dur ensuite, on va utliser un helper
 <form action="/restaurants" method="post">
   <input type="text" name="restaurant[name]">
@@ -193,12 +202,16 @@ si on veut rajouter un label pour chaque input, il faut rajouter f.label
 Ce helper fonctionne de la manièe suivante:
 Pour se construire, il a besoin qu'on lui donne un objet restaurant car apres, il va generer des parametres imbriqués ```(restaurant[:name], restaurant[:stars], restaurant[:address])```.
   
-Ce qui est bie  c'est qu'on met le meme formulaire form_for sur le new et sur l'edit. Et selon que l'objet est prérempli ou pas, il va remplir ou non le formulaire.
+Ce qui est bien  c'est qu'on met le meme formulaire form_for sur le new et sur l'edit. Et selon que l'objet est prérempli ou pas, il va remplir ou non le formulaire.
   
 Donc ds le controller à new, on doit construire cet objet en coquille vide.
+
   ```@restaurant = Restaurant.new```
+  
 et pour l'edit, on va mettre:
+
   ```@restaurant= Restaurant.find(params[:id])```. Car il a besoin de l'id dans l'Url.
+  
   
 Si on fait rails s et qu'on va sur le formulaire new, on peut en créer un.
 Au moment d'envoyer, il nous dit qu'il manque ```create.html.erb```

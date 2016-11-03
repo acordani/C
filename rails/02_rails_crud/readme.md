@@ -92,9 +92,9 @@ Pour l'index, il manque la vue: index.html.erb
 ```ruby
 <h1>Les restaurants</h1>
 <@restaurants.each do |restaurant|%>
-  <h2><%= restaurant.name %>
-  <p><%= restaurant.address %>
-  <p><%= "*" * restaurant.stars %>
+<h2><%= restaurant.name %></h2>
+<p><%= restaurant.address %></p>
+<p><%= "*" * restaurant.stars %></p>
 <% end %>
 ```
 
@@ -107,14 +107,26 @@ Restaurant.create(name:"Ganieure", stars:2, address:"Champs Elysées")
 Restaurant.create(name:"la serre", stars:2, address:"Quai de la Rapée")
 Restaurant.create(name:"le Dindon", stars:3, address:"Rue de louse")
 ```
-```rake db:seed```, pour executer la seed.
+```rake db:seed```, pour executer la seed. Elle execute ce fichier ruby.
+
+![1jpg](https://cloud.githubusercontent.com/assets/10654877/19979647/7e1f9a9c-a1fb-11e6-9e0d-8f7e7a884323.jpg)
+
+On a donc les restaurants qui s'affichent. On a rempli notre base de données.
 
 Le show
 Il faut l'id pour récuperer le resto.
-Si on fait rake routes, on a : restaurants/:id
+Si on fait ```rake routes```, on a : ```restaurants/:id```
 l'id est donc dans l'Url.
+
+Car si on fait : ```/restaurants/5```,
+On va avoir :
+![2jpg](https://cloud.githubusercontent.com/assets/10654877/19979943/82bab784-a1fc-11e6-92c3-0b9a5f6f5836.jpg)
+
+
 pour le recuperer, on va utiliser la methode .find
 ```@restaurant = Restaurant.find(params[:id])```
+
+Du coup, une fois qu'on a récupéré le restaurant, on peut le donner à la vue:
 
 Il faut créer le template: show.html.erb
 ```ruby

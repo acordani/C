@@ -161,3 +161,27 @@ end
 <%= link_to "Edit the post", edit_post_path(@post) %>
 <%= link_to "Destroy", post_path, method: :delete, data: { Confirm: "Are you sur yaou want to delete"} %>
 ```
+
+
+---------------------------------------------------------
+On va utiliser Bootstrap:
+
+1- Ajouter dans le gemfile
+gem 'bootstrap-sass', '~> 3.3.5'
+
+2- Import Bootstrap styles in app/assets/stylesheets/application.scss: Renommer le fichiser.css en .scss
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+3- Require Bootstrap Javascripts in app/assets/javascripts/application.js:
+
+//= require bootstrap-sprockets
+
+A mettre juste au dessus de require_tree
+
+
+Home Page
+
+

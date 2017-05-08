@@ -26,3 +26,10 @@ class Skill <
 	
 end
 ```
+
+Puis Rajout des compétences:
+
+```
+LISTING_NAME = ["Negociateur", "Photographe", "Home Stager", "Graphiste", "Distributeur"]
+validates :listing_name, presence: true, , inclusion: { in: LISTING_NAME }
+```

@@ -18,11 +18,11 @@ Running via Spring preloader in process 20447
 
 Puis dans ```app/models/skill.rb```
 ```
-class Skill < 
+class class Skill < ApplicationRecord 
 
 	belongs_to :user
 
-	validates :listing_name, presence: true
+	validates :listing_skill, presence: true
 	
 end
 ```

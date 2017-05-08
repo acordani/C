@@ -30,6 +30,6 @@ end
 Puis Rajout des compétences:
 
 ```
-LISTING_NAME = ["Negociateur", "Photographe", "Home Stager", "Graphiste", "Distributeur"]
-validates :listing_name, presence: true, , inclusion: { in: LISTING_NAME }
+LISTING_SKILL = ["Negociateur", "Photographe", "Home Stager", "Graphiste", "Distributeur"]
+validates :listing_skill, presence: true, , inclusion: { in: LISTING_SKILL }
 ```

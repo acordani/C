@@ -1,6 +1,6 @@
 - On utilise le rails new devise.
 
-## Minimal
+## Devise
 
 
 

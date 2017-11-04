@@ -166,7 +166,7 @@ Puis, pour afficher, on va ajouter :
 On va créer une variable Total
 et une variable ProductList
 
-````
+```
 var Total = React.createClass({
   render: function() {
     return (
@@ -176,9 +176,9 @@ var Total = React.createClass({
     );
   }
 });
-````
+```
 
-````
+```
 var ProductList = React.createClass({
   render: function() {
     return (

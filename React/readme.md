@@ -197,9 +197,9 @@ A l'interieur de la variable ProductList, on va rendre des Product
 
 Puis, on va remplacer Product par ProductList dans React.render
 
-````
+```
 React.render(<ProductList/>, document.getElementById("root"));
-````
+```
 ![product](https://cloud.githubusercontent.com/assets/10654877/13730190/d9705600-e948-11e5-9d19-497a8a85fb45.jpg)
 
 ### Working with property - Data

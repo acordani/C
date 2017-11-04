@@ -254,3 +254,41 @@ show: function() {
   },
 ```
 ![react](https://cloud.githubusercontent.com/assets/10654877/13816966/a50d297a-eb90-11e5-95b1-b7597896d74e.gif)
+
+
+
+Pour créer un formulaire, on utilise `form`
+```
+<div>
+    <form>
+        <input type="text/>
+        <button type="submit>GO</button>
+    </form>
+</div>
+```
+
+
+Afin d'ajouter une fnction sur le bouton, on va utiliser onSubmit directement sur la `<div>` de départ.
+
+`onSubmit = {e => this.changeText(e)}`
+
+et ensuite audessus du render, on va implementer la nouvelle fonction.
+
+```
+changeText = event => {
+    event.preventDefault();
+    console.log('ah');
+};
+```
+
+Ce qui va nous donner ah sur la console a chaque fois que nous allons cliquer sur le bouton.
+
+
+Afin de récuperer l'input que nous allons mettre, on va utiliser `ref`
+
+`ref = {input => {this.totoInput = input}}`
+
+et du coup dans changeText, on va mettre `console.log(this.totoInput.value);`
+
+
+

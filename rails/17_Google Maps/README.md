@@ -129,4 +129,16 @@ $('a#openMap').bind('click',function(){
 ```
    <li><a href="#" id="openMap"><span class="icon-map2"></span> Voir la carte</a></li>
 ```
-   
+
+
+Pour Trouver l'id_place d'une entreprise, 
+il faut aller sur:
+```
+https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder?hl=fr
+```
+
+Et puis ensuite pour récupérer le json, on fait:
+
+```
+https://maps.googleapis.com/maps/api/place/details/json?placeid=remplacer_par_id_place&key=remplacer_par_votre_APIKEy
+```

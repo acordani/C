@@ -255,7 +255,7 @@ Les ``{}``contiendront le callback qui sera appelé à chaque fois que l'événe
 Le CallBack sera une ArrowFunction.
 
 ```
-<input type="number" placeholder="quantité" value="" onChange={ (event) => this.setState{quantity:event.target.value})}; />
+<input type="number" placeholder="quantité" value="" onChange={ (event) => this.setState({quantity:event.target.value})}; />
 ```
 
 Pourquoi une ArrowFunction dans les accolades ?

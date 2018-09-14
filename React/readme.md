@@ -425,3 +425,64 @@ Puis on modifie l'état grâce à setState
 ``this.setState({articles: newArticles});``
 
 
+### 16- Vider le formulaire après soumission
+
+Pour vider le formulaire, il suffit de réinitialiser l'état du handleSubmit:
+
+``this.setState({name:"", quantity:0});``
+
+### 17- Passer les articles au composant ItemList
+
+Le composant ItemList va avoir besoin du tableau d'articles. Il faut donc que son parent ``App.js`` lui passe ses articles
+
+``<ItemList articles={this.state.articles} />``
+
+### 18- Afficher le contenu d'un tableau
+
+Plutôt qu'utiliser un foreach, nous allons utiliser ma méthode ``map``.
+
+Ex: 
+```
+let fruits = ["pommes", "bananes", "poires"]
+
+fruits.map(f =>console.log("miam miam", f));
+```
+=> 
+miam miam pommes
+miam miam bananes
+miam miam poires
+
+La méthode ``map`` retourne donc un nouveau tableau.
+
+``<ItemList />``
+
+```
+const ItemList = (props) => {
+  return(
+    <div>
+      {props.articles.map(article => <div key= {article.id}>{article.quantity} {article.name}</div>);
+    </div>
+  );
+}
+```
+
+Attention a rajouter l'id dans le div
+
+### 19- Ajouter Bootstrap
+
+Prendre le CDN et l'ajouter dans ``public/index.html``
+
+Puis ajouter la class container dans le ``body``
+
+``<body class="container">``
+
+### 20- Importer css dans un composant
+
+Creons dans ``src``un fichier ``style.css``
+
+Puis dans ``<Form />`` ajouter les class avec ``className``.
+Et ne pas oublier de faire un import 
+
+``ìmport "./style.css";``
+
+  

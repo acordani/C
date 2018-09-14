@@ -160,7 +160,136 @@ LEs ClassBased Components sont là lorsqu'on a besoin d'un état, lorsqu'on a be
 
 ### 9- Transformer un StateLess en ClassBased
 
+On peut changer un composant en cours de dévelopement.
+
+Ex: Le composant Form.
+
+```
+StateLess Initial:
+
+import React from 'react';
+cont Form = () => {
+  return(
+    <div>Component Form</div>
+  );
+};
+export default Form;
+```
+
+```
+ClassBased Component:
+
+import React from 'react';
+
+state = {};
+
+class Form extends React.Component {
+  render() {
+    return(
+      <div>Comonent Form</div>
+    );
+  }
+}
+
+export default Form;
+```
+
+``state`` va contenir les données saisies par l'utilisateur.
+
+Notre formulaire va nous permettre de saisir un article et une quantité.
+
+Donc notre état(state) sera un objet javascript qui va comporter la propriété name & quantity
+
+```
+state= {
+  name:"",
+  quantity:0
+};
+```
+
+
+Du coup, maintenant, on peut créer notre formulaire dans notre component Form.
+
+```
+import React from 'react';
+
+state = {
+  name:"",
+  quantity:0
+};
+
+class Form extends React.Component {
+  render() {
+    return(
+      <form>
+        <input type="number" placeholder="quantité" />
+        <input type="text" placeholder="article" />
+        <button type="submit">Ajouter</button>
+      </form>
+    );
+  }
+}
+
+export default Form;
+```
+
+Le type ``submit``de ``button``permet la validation par la touche Entrée
+
+Pour le moment quand on ajoute, il ne se passe rien.
+
+### 10- Gérer les Evenement du DOM
+
+Pour récupérer les données saisies par l'utilisateur, on va ajouter une ``value`` et écouter l'évenement ``Change``.
+En React, on va prefixer les évenements du DOM par un ``on``puis on ajoutera l'évenement. Ici avec l'évenement ``change``, cela va donner ``onChange``.
+
+```
+<input type="number" placeholder="quantité" value="" onChange={} />
+<input type="text" placeholder="article" value="" onChange={} />
+``` 
+
+Les ``{}``nous permettre de rajouter à l'intérieur du javascript pour le callback
+
+Si on laisse comme ça, cela fait une erreur car il faut absolument mettre quelquechose à l'intérieur des ``{}``.
+Les ``{}``contiendront le callback qui sera appelé à chaque fois que l'événement change sera envoyé.
+
+Le CallBack sera une ArrowFunction.
+
+```
+<input type="number" placeholder="quantité" value="" onChange={ (event) => this.setState{quantity:event.target.value})}; />
+```
+
+Pourquoi une ArrowFunction dans les accolades ?
+
+Il faut  utiliser une fonction car on veut differer l'éxécution du callback.
 
 
 Comprendre un callback sur un input:
-<input type="text" placeholder="toto" value="" onChange={console.log("toto")} />
+``<input type="text" placeholder="toto" value="" onChange={console.log('toto')} />``
+
+Si on regarde dans la console, ``console.log`` sera exécuté de suite.
+Nous ce qu'on veut, c'est que toto soit exécuté à chaque changement dans ``l'input``.
+
+Du coup, cela va donner:
+``<input type="text" placeholder="toto" value="" onChange= () => {console.log('toto')} />``
+Ici, toto ne va pas s'éxecuter tout de suite.
+
+### 11- Modification de l'état du composant Form à chaque saisie
+
+Il faut utiliser ``setState``
+
+Ex:
+
+``onChange = {(event)=> this.setState({quantity:5})} />``
+Dès qu'on changera l'input, le state passera à 5.
+
+MAis ce qu'on veut, c'est récuperer la vrai valeur saisie dans l'input. On va utiliser pour ce faire ``event.target.value``
+
+``onChange = {(event) => this.setState({quantity:event.taget.value})} />
+
+Afin que cela fonctionne, il faut aussi donner une valeur à ``value``.
+
+```
+<input type="number" placeholder="quantité" value={this.state.quantity} onChange= {(event) => this.setState({quantity:event.target.value})} />
+```
+
+

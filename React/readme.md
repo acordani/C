@@ -284,12 +284,98 @@ Dès qu'on changera l'input, le state passera à 5.
 
 MAis ce qu'on veut, c'est récuperer la vrai valeur saisie dans l'input. On va utiliser pour ce faire ``event.target.value``
 
-``onChange = {(event) => this.setState({quantity:event.taget.value})} />
+``onChange = {(event) => this.setState({quantity:event.taget.value})} />``
 
 Afin que cela fonctionne, il faut aussi donner une valeur à ``value``.
 
 ```
 <input type="number" placeholder="quantité" value={this.state.quantity} onChange= {(event) => this.setState({quantity:event.target.value})} />
 ```
+### 12- Modifier l'état d'un composant(suite)
+
+```
+<input type="text" placeholder="article" value={this.state.name} 
+  onChange= {(event)=> this.setState({name:event.target.value})} />
+```
+
+### 13- Gérer la soumission du formulaire
+
+Selon la même logique que pour les champs texte, maintenant, on veut écouter l'événement ``submit``.
+Comme il va y avoir plusieurs lignes de code, on va créer une fonction externe.
+
+handleSubmit = (event) => {
+  console.log('inside handlSubmit');
+};
+
+Regardons si la fonction fonctionne avec un console.log
+
+Et appelons la fonction à chaque submit. Pour ce faire, on va l'appeler dans la balise ``<form>``.
 
 
+``<form onSubmit= {this.handleSubmit}>``
+
+Pour éviter le raffraichissement de la page à chaque validation, on va utliser dans la fonction:
+
+```
+handleSumit(event) => {
+  event.preventDefault();
+  console.log('inside handleSubmit');
+};
+```
+
+Maintenant depuis ``handleSubmit``on peut lire le contenu du state que nous passerons ultérieurement au composant Parent ``<App />``.
+
+Pour ce faire, au lieu d'afficher le console.log dans ``handleSubmit``, on va afficheer l'état ``console.log(this.state);``
+
+Ce qui va nous donner dans la console :
+
+``Object{name:"", quantity:0}``
+
+
+### 14- Passer des données d'un composant Parent vers un composant Enfant
+
+Notre formulaire possede un h3 avec 'Ajouter des Articles à Acheter'.
+
+On  peut lui passer dynamiquement un titre du Parent vers l'Enfant grâce aux Props.
+
+``<App />``
+``<Form formTitle="Ajouter des Articles à Acheter" />``
+
+Ce qui nous permet de retrouver dans le composant ``<Form />``:
+
+``<h3>{this.props.formTitle}</h3>``
+
+On peut aussi rendre accessible une fonction via les props du Parent à son Enfant.
+
+Ca tombe bien car ce qu'on saouhaite, c'est que le composant ``<Form />``soit très peu intelligent.
+
+On prefère que ce soit ``<App />``qui gère l'ajout de nouveaux Articles.
+
+Du coup, on va utiliser les props pour faire passer une référence à une fonction présente dans ``<App />``.
+
+``<App />``
+
+On va créer une fonction addArticle dans App
+
+```
+addArticle = (article) => {
+  console.log(article)
+ };
+ ```
+ 
+ Puis grâce à l'appel du composant ``<Form />``, on va intégrer une props en appelant cette fonction.
+ 
+ 
+ ``<Form formTitle="Ajouter un article" addArticle={this.addArticle} />``
+ 
+ Puis dans le composant ``<Form />`` au sein de la fonction ``handleSubmit``
+ 
+ ```
+ handleSubmit = (event) => {
+  event.preventDefault();
+  this.props.addArticle(this.state);
+ ```
+ 
+ On appelle la fonction ``addArticle`` grâce à ``this.props`` et on lui donne comme paramètre ``this.state``.
+ 
+ 

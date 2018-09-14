@@ -378,4 +378,50 @@ addArticle = (article) => {
  
  On appelle la fonction ``addArticle`` grâce à ``this.props`` et on lui donne comme paramètre ``this.state``.
  
+ ### 15- Ajouter un item à l'état du composant Parent
  
+ Ce que nous voulons maintenant c'est que le composant PArent App.js ait son propre état.
+ 
+ Donc ajoutons un state à ``<App />``
+ 
+ ``state = { articles:[] };``
+ 
+ le state à comme unique objet un tableau vide qui s'appelle ``articles``
+ 
+ Dans les tableau, il y aura la liste de courses.
+ 
+ La fonction ``addArticle`` que nous avons créé dans les vidéos précédentes va nous permettre d'ajouter un article au tableau d'articles.
+ Donc nous allons le faire en utilisant ``l'immutabilité``.
+ 
+ Au lieu de faire un push sur le tableau, on va créer un nouveau tableau en utilisant le ``spread operator``.
+ 
+ 
+ Ex:
+ ```
+ let fruits= ["pomme","banane","orange"]
+ let newFruit= ["poire"]
+ let fruits2 = [...fruits, newFruit]
+ => fruits2 
+ => ["pomme","banane","orange", "poire"]
+ ```
+ 
+ Si nous n'avions pas utilisé le spread operator, nous aurions eu un tableau à 2 dimensions.
+ 
+ C'est ce principe que nous allons mettre en place dans le composant ``<App />``.
+ 
+On commence par récupérer l'état courant:
+``let oldArticles = this.state.articles;``
+
+Puis on va créer un id en utilisant Date.now
+
+`` article.id = Date.now``
+
+Puis on utilise le spread operator pour ajouter un article
+
+``let newArticles = [...oldArticles, article];``
+
+Puis on modifie l'état grâce à setState
+
+``this.setState({articles: newArticles});``
+
+
